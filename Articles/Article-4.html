@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefits of Buying Farmlands with Greensiri Tarini</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* LOGO */
+        .nav-logo img {
+            height: 50px;
+        }
+
+        /* MENU */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: #000;
+            display: block;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+
+            .hamburger {
+                display: flex;
+                z-index: 2001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                background: rgba(0, 0, 0, 0.8);
+                transform: translateY(-100%);
+                transition: 0.4s;
+                z-index: 2000;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-menu a {
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        /* DEMO BACKGROUND */
+        body {
+            background: #fff;
+        }
+
+        /* ARTICLE */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .article {
+            padding: 40px 0 60px;
+        }
+
+        .article h1 {
+            font-family: 'Poppins', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #000;
+        }
+
+        .article img {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 30px;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #222;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: #fff;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <!-- LOGO -->
+        <div class="nav-logo">
+            <img
+                src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png">
+        </div>
+
+        <!-- MENU -->
+        <ul class="nav-menu">
+            <li><a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/" onclick="closeMenu()">HOME</a></li>
+            <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+            <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
+            <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
+            <li><a href="#">SHOT AT SITE</a></li>
+            <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
+        </ul>
+
+        <!-- HAMBURGER -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </nav>
+
+    <section class="article container">
+        <h1>Benefits of Buying Farmland with Greensiri Tarini</h1>
+
+        <img
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Buying%20Farmlands%20with%20Greensiri%20Tarini.png">
+
+
+        <p>In recent years, there has been a growing trend of people seeking to invest in farmlands. With increasing
+            urban congestion and the desire for a healthier, more sustainable lifestyle, owning farmland has become a
+            dream for many. Greensiri Tarini Farms offers a unique opportunity to turn that dream into reality. <br>
+
+            Located near Bangalore, these managed farmlands combine natural beauty with modern amenities, making them an
+            ideal choice for investors and nature enthusiasts. Here are some key benefits of purchasing farmland with
+            Greensiri Tarini. <br>
+        </p>
+        <h2>High Returns and Long-Term Value</h2>
+        <p>
+            Farmlands have a proven track record of delivering substantial long-term returns. With rising global food
+            demands and shrinking arable land, farmland values continue to appreciate steadily. Greensiri Tarini
+            identifies prime agricultural regions with high productivity, ensuring your investment yields consistent
+            returns. Farmland is also a resilient asset during economic fluctuations, offering a safe harbor against
+            market volatility. <br>
+        </p>
+        <h2>Eco-Conscious Farming Practices</h2>
+        <p>
+            Promoting sustainable and environmentally friendly farming practices is the mission of Greensiri Tarini. You
+            support soil regeneration, effective water usage, and organic farming by making investments in their
+            farmlands. In addition to improving the quality of produce, this environmental dedication aids in the fight
+            against climate change and the preservation of biodiversity. Your investment promotes future generations’
+            health and a cleaner planet. <br>
+        </p>
+        <h2>Hassle-Free Passive Income</h2>
+        <p>
+            Having farmland through Greensiri Tarini allows you to earn passive income without having to worry about
+            day-to-day administration. Their staff manages the farming activities, guaranteeing maximum harvests and
+            efficient use of the land. You can take advantage of a steady income stream while they manage the
+            intricacies of land upkeep and production, whether through crop leasing or profit-sharing arrangements. <br>
+        </p>
+        <h2>Inflation Hedge and Portfolio Diversification</h2>
+        <p>
+            Farmland is a powerful hedge against inflation and an excellent way to diversify your investment portfolio.
+            Unlike traditional financial assets, farmland values tend to rise with inflation, preserving your purchasing
+            power. By partnering with Greensiri Tarini, you gain exposure to a physical asset that offers both stability
+            and long-term appreciation, balancing your investment risk profile effectively. <br>
+        </p>
+        <h2>Positive Social and Community Impact</h2>
+        <p>
+            When you invest with Greensiri Tarini, you’re not just growing your wealth—you’re empowering local
+            communities. Your investment supports small-scale farmers, creates jobs, and enhances rural livelihoods.
+            Through sustainable practices and community engagement, Greensiri Tarini fosters economic growth while
+            ensuring fair and ethical agricultural development. <br>
+        </p>
+        <h2>Expert Management and Comprehensive Support</h2>
+        <p>
+            Investments in farming can be difficult to navigate without the proper advice. Including land acquisition,
+            legal compliance, and operational management, Greensiri Tarini provides end-to-end help. Their knowledgeable
+            staff makes sure that your investing path is clear and easy, enabling you to make wise choices and optimize
+            profits. Your farming investment is safe and rewarding thanks to their experience. <br>
+        </p>
+        <h2>Legacy and Future Security</h2>
+        <p>
+            Farmland is not just an investment—it’s a legacy you can pass down to future generations. With Greensiri
+            Tarini, you can preserve wealth and create a sustainable asset that benefits your family for years to come.
+            Their commitment to ethical stewardship ensures that your land remains productive and environmentally sound,
+            safeguarding your legacy while supporting a sustainable agricultural future. <br>
+        </p>
+        <h2>Conclusion</h2>
+        <p>
+            Investing in farmlands with Greensiri Tarini offers a unique blend of financial growth, environmental
+            responsibility, and social impact. It’s an opportunity to secure your future while contributing to
+            sustainable agriculture and community welfare. With expert support and a commitment to transparency,
+            Greensiri Tarini makes farmland ownership accessible and rewarding. Take the first step toward a sustainable
+            and prosperous future by investing with Greensiri Tarini today. <br>
+        </p>
+
+    </section>
+<section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+    <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="related-card" onclick="location.href='Article-2.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
+            <p>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="related-card" onclick="location.href='Article-21.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20growth%20of%20communities%20in%20bengaluru%20eco%20friendly%20.jpg">
+            <p>The Growth of Communities in Bengaluru - Eco Friendly</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="related-card" onclick="location.href='Article-26.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
+            <p>Understanding Agricultural Land Measurement in India</p>
+        </div>
+
+    </div>
+</section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                <p class="footer-text">
+                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                    YELAHANKA, BENGALURU - 64
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 95111 25552
+                </a>
+                <a href="mailto:contact@greensiri.in" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-regular fa-envelope"></i>
+                    contact@greensiri.in
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <div>
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo">
+                </div>
+                <p class="footer-tagline"></p>
+            </div>
+
+            <div class="footer-col footer-subscribe">
+                <h5>DO YOU HAVE ANY QUERY?</h5>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="example@email.com" required
+                        oninvalid="this.setCustomValidity('please enter valid email address')"
+                        oninput="this.setCustomValidity('')">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="subscribe-note">
+                    PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                </div>
+            </div>
+
+            <div class="footer-col footer-social">
+                <h5>SOCIAL MEDIA LINKS</h5>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; Copyright 2026
+                <span class="highlight">GREENSIRI PROPERTIES</span>.
+                All Rights Reserved |
+
+                Website Design by
+                <span class="highlight">PRIZMABRIXX</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Houses for Farmland – Greensiri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #fff;
+        }
+
+        /* NAVBAR (UNTOUCHED) */
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: #000;
+            display: block;
+        }
+
+        @media(max-width:768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 2001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                background: rgba(0, 0, 0, 0.85);
+                transform: translateY(-100%);
+                transition: 0.4s;
+                z-index: 2000;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-menu a {
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 88%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* HERO SECTION (SIMPLIFIED) */
+        .article-hero {
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .article-hero .tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #333;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        .article-hero h1 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .article-hero .intro {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 720px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        /* SECTION TITLE (SIMPLIFIED) */
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            padding-top: 20px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* HOUSE LIST - SEQUENTIAL LAYOUT */
+        .house-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .house-item {
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 50px;
+        }
+
+        .house-item:last-child {
+            border-bottom: none;
+        }
+
+        .house-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .house-item .item-num {
+            color: #555;
+            font-weight: 600;
+        }
+
+        .house-item .desc {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .item-meta {
+            background: #fafafa;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .item-meta p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .item-meta p:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-meta strong {
+            color: #111;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .item-img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        @media(max-width: 768px) {
+            .article-hero h1 {
+                font-size: 28px;
+            }
+
+            .house-item h3 {
+                font-size: 20px;
+            }
+        }
+
+        /* CONCLUSION BOX (SIMPLIFIED) */
+        .conclusion-box {
+            background: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .conclusion-box h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 16px;
+        }
+
+        .conclusion-box p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* FOOTER (UNTOUCHED) */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: #fff;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <img
+                src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png">
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/" onclick="closeMenu()">HOME</a></li>
+            <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+            <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
+            <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
+            <li><a href="#">SHOT AT SITE</a></li>
+            <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
+        </ul>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="article-hero container">
+        <h1>Types of Houses for Farmland Living</h1>
+        <p class="intro">
+            Farmland properties offer a peaceful escape from city life. Whether you dream of an eco-friendly retreat, a
+            luxurious villa, or a cozy cabin — here's your complete guide to the best farmland home types in India.
+        </p>
+    </div>
+
+    <div class="container">
+        <img class="hero-img"
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse-Types-Hero.png">
+
+        <h2 class="section-title">Peaceful Living Options for Every Lifestyle</h2>
+        <p class="section-sub">Compare 10 house types by style, suitability, and budget — find your perfect match.</p>
+
+        <div class="house-list">
+
+            <div class="house-item">
+                <h3><span class="item-num">1.</span> Eco-Friendly Homes 🌿</h3>
+                <p class="desc">Sustainable homes built with green materials, designed to minimize environmental impact
+                    while offering modern comfort.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Environmentally conscious individuals</p>
+                    <p><strong>Price Range:</strong> ₹60 lakh – ₹1.5 crore</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_1.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">2.</span> Log Cabin 🪵</h3>
+                <p class="desc">Rustic wooden homes that offer a natural, cosy aesthetic with great insulation — perfect
+                    for off-grid living.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Nature lovers, off-grid living</p>
+                    <p><strong>Price Range:</strong> ₹40 lakh – ₹1.5 crore</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_2.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">3.</span> Ranch-Style Homes 🌾</h3>
+                <p class="desc">Single-story homes with open layouts and large outdoor spaces that blend seamlessly with
+                    farmland surroundings.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Large families, rural living</p>
+                    <p><strong>Price Range:</strong> ₹70 lakh – ₹2 crore</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_3.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">4.</span> Cabins 🏕️</h3>
+                <p class="desc">Wooden cabins provide a cozy, rustic escape with essential comforts — ideal for a
+                    peaceful countryside lifestyle.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Permanent or weekend homes</p>
+                    <p><strong>Price Range:</strong> ₹3,00,000 – ₹25,00,000</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_4.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">5.</span> Courtyard Houses 🏛️</h3>
+                <p class="desc">Homes with a central open courtyard that offers privacy, enhanced sunlight, and a strong
+                    connection to nature.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Full-time or luxury homes</p>
+                    <p><strong>Price Range:</strong> ₹10,00,000 – ₹50,00,000</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_5.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">6.</span> Tiny Homes 🏠</h3>
+                <p class="desc">Compact, efficient homes designed for minimalist, budget-friendly living without
+                    sacrificing comfort.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Singles or couples, simple lifestyle</p>
+                    <p><strong>Price Range:</strong> ₹15 lakh – ₹50 lakh</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_6.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">7.</span> Luxury Villa 💎</h3>
+                <p class="desc">Spacious, high-end homes with premium features, lavish amenities, and beautifully
+                    landscaped surroundings.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> High-income individuals, prestige living</p>
+                    <p><strong>Price Range:</strong> ₹1.5 crore – ₹5 crore+</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_7.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">8.</span> Cottage 🏡</h3>
+                <p class="desc">Charming, small homes with a cozy rustic feel, perfect for a peaceful countryside
+                    retreat or vacation getaway.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Small families or vacation homes</p>
+                    <p><strong>Price Range:</strong> ₹30 lakh – ₹70 lakh</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_8.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">9.</span> Cob Houses 🌍</h3>
+                <p class="desc">Eco-friendly homes made from clay, sand, and straw — durable, energy-efficient, and
+                    naturally beautiful.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Eco-friendly & DIY projects</p>
+                    <p><strong>Price Range:</strong> ₹3,00,000 – ₹12,00,000</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_9.png">
+            </div>
+
+            <div class="house-item">
+                <h3><span class="item-num">10.</span> Treehouses 🌳</h3>
+                <p class="desc">Modern treehouses offer a unique, adventurous living experience with stunning views and
+                    deep connection to nature.</p>
+                <div class="item-meta">
+                    <p><strong>Best For:</strong> Eco-retreats, adventurous stays</p>
+                    <p><strong>Price Range:</strong> ₹5,00,000 – ₹20,00,000</p>
+                </div>
+                <img class="item-img"
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse%20Designs%20%26%20Types%20for%20Farmland%20Owners%20near%20Bangalore_10.png">
+            </div>
+
+        </div>
+
+        <div class="conclusion-box">
+            <h2>Find Your Perfect Countryside Home</h2>
+            <p>
+                From simple cozy cabins to luxurious villas surrounded by greenery, farmland offers a wide range of
+                housing options for every lifestyle and budget. Whether you're looking for a permanent home, a weekend
+                retreat, or a sustainable investment — there's a farmland home type designed just for you. Choose
+                wisely, live peacefully.
+            </p>
+        </div>
+    </div>
+
+    <section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+        <div class="related-grid">
+            <div class="related-card" onclick="location.href='Article-5.html'">
+                <img
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Owning%20a%20Farmhouse%20in%20a%20Gated%20Community%20Near%20Bangalore.png">
+                <p>Benefits of Owning a Farmhouse in a Gated Community Near Bangalore</p>
+            </div>
+
+            <div class="related-card" onclick="location.href='Article-19.html'">
+                <img
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Sustainable%20Living%20in%20Farmhouses.png">
+                <p>Sustainable Living in Farmhouses</p>
+            </div>
+
+            <div class="related-card" onclick="location.href='Article-22.html'">
+                <img
+                    src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Timeless%20Charm%20of%20Farmhouses%20in%20Farmlands_1.png">
+                <p>The Timeless Charm of Farmhouses in Farmlands</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                <p class="footer-text">
+                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                    YELAHANKA, BENGALURU - 64
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 95111 25552
+                </a>
+                <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+                    style="color: white; text-decoration: none;">
+                    <i class="fa-regular fa-envelope"></i>
+                    contact@greensiri.in
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <div>
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo">
+                </div>
+                <p class="footer-tagline"></p>
+            </div>
+
+            <div class="footer-col footer-subscribe">
+                <h5>DO YOU HAVE ANY QUERY?</h5>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="example@email.com" required
+                        oninvalid="this.setCustomValidity('please enter valid email address')"
+                        oninput="this.setCustomValidity('')">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="subscribe-note">PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</div>
+            </div>
+
+            <div class="footer-col footer-social">
+                <h5>SOCIAL MEDIA LINKS</h5>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; Copyright 2026
+                <span class="highlight">GREENSIRI PROPERTIES</span>.
+                All Rights Reserved |
+
+                Website Design by
+                <span class="highlight">PRIZMABRIXX</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* LOGO */
+        .nav-logo img {
+            height: 50px;
+        }
+
+        /* MENU */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: #000;
+            display: block;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+
+            .hamburger {
+                display: flex;
+                z-index: 2001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                background: rgba(0, 0, 0, 0.8);
+                transform: translateY(-100%);
+                transition: 0.4s;
+                z-index: 2000;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-menu a {
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        /* DEMO BACKGROUND */
+        body {
+            background: #fff;
+        }
+
+        /* ARTICLE */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .article {
+            padding: 40px 0 60px;
+        }
+
+        .article h1 {
+            font-family: 'Poppins', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #000;
+        }
+
+        .article img {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 30px;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #222;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: #fff;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <!-- LOGO -->
+        <div class="nav-logo">
+            <img
+                src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png">
+        </div>
+
+        <!-- MENU -->
+        <ul class="nav-menu">
+            <li><a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/" onclick="closeMenu()">HOME</a></li>
+            <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+            <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
+            <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
+            <li><a href="#">SHOT AT SITE</a></li>
+            <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
+        </ul>
+
+        <!-- HAMBURGER -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </nav>
+
+    <section class="article container">
+        <h1>Own Farmland Near Bangalore Airport with Greensiri Tarini Farms</h1>
+
+        <img
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Own%20Farmland%20Near%20Bangalore%20Airport%20with%20Greensiri%20Tarini%20Farms.png">
+
+
+        <p>Looking for a farmland project near Bangalore Airport that offers both a peaceful lifestyle and smart
+            investment potential? Welcome to Greensiri Tarini Farms & Resorts—a unique blend of nature, wellness, and
+            long-term value just a short drive from Kempegowda International Airport. <br>
+            With the rising interest in eco-conscious living and sustainable investments, owning farmland near Bangalore
+            Airport is more than a trend—it’s a lifestyle choice and a future-ready asset. <br>
+        </p>
+
+        <h2>✨ Why Choose a Farmland Project Near Bangalore Airport?</h2>
+        <p>
+            The area around Bangalore’s international airport is rapidly transforming into a hotspot for infrastructure
+            development and premium real estate. Here’s why this location is ideal for farmland buyers: <br>
+            • Excellent Connectivity: The airport ensures easy access for city dwellers and NRIs alike, making it
+            perfect for weekend retreats or periodic visits. <br>
+            • Growth Potential: With projects like the STRR, aerospace park, and IT corridors in North Bangalore, land
+            values are expected to appreciate significantly. <br>
+            • Green Escape from City Life: Proximity to the airport does not mean compromise on peace. This region still
+            offers lush landscapes and clean air—perfect for a healthier and quieter life. <br>
+        </p>
+
+        <h2>🌿 Discover Greensiri Tarini Farms & Resorts</h2>
+        <p>
+            Tarini Farms by Greensiri is a premium managed farmland project near Bangalore Airport, offering more than
+            just land—it offers a lifestyle rooted in sustainability, wellness, and community. <br>
+            Here’s what makes Tarini Farms stand out: <br>
+            • ✅ Fully Managed Farmlands: Own a plot with complete maintenance support—soil care, plantation, irrigation,
+            and harvesting, all handled by our expert team. <br>
+            • 🏡 Weekend Retreats: Build your own eco-cottage or enjoy stay options at our serene resort setting. <br>
+            • 🌾 Organic Farming: Grow medicinal plants, herbs, fruits, and vegetables using sustainable, chemical-free
+            methods. <br>
+            • 💧 Eco-Infrastructure: From rainwater harvesting to renewable energy, everything is designed for long-term
+            environmental responsibility. <br>
+            • 👨‍👩‍👧‍👦 Like-Minded Community: Join a network of individuals passionate about nature, wellness, and
+            green living. <br>
+        </p>
+
+        <h2>💰 A Smart Investment Opportunity</h2>
+        <p>
+            Investing in a farmland project near Bangalore Airport isn’t just about land ownership—it’s about creating a
+            tangible, appreciating asset with real lifestyle value. <br>
+            At Greensiri Tarini Farms, you get: <br>
+            • A well-located property with future growth potential <br>
+            • Income opportunities through organic produce or cottage rental <br>
+            • Personal access to clean food and a natural setting <br>
+            • Weekend getaway potential for your family <br>
+            • Low-maintenance investment with managed services <br><br>
+            It’s the ideal solution for professionals, NRIs, retirees, and anyone looking to invest in farmland near
+            Bangalore without the burden of day-to-day farming. <br>
+        </p>
+
+        <h2>📍 Prime Location. Peaceful Life.</h2>
+        <p>
+            Tarini Farms is conveniently located just a short drive from Kempegowda International Airport, making it one
+            of the most accessible farmland projects in Karnataka. Whether you’re escaping for the weekend or planning
+            long-term wellness living, this location offers unmatched convenience. <br>
+        </p>
+
+        <h2>🌱 Conclusion: Invest in Nature, Invest in the Future</h2>
+        <p>
+            The demand for sustainable living is growing—and so is the value of owning land close to urban conveniences.
+            With Greensiri Tarini Farms & Resorts, you’re not just buying a piece of land; you’re securing a future of
+            health, harmony, and high returns. <br>
+            If you’ve been searching for a farmland project near Bangalore Airport, this is your opportunity to own
+            managed farmland that’s thoughtfully developed, eco-friendly, and investment ready. <br><br>
+            👉 Schedule a visit today and take the first step toward green ownership with Greensiri. <br>
+        </p>
+
+    </section>
+    <section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+    <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="related-card" onclick="location.href='Article-2.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
+            <p>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="related-card" onclick="location.href='Article-20.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Future%20of%20Real%20Estate%20Investments%20in%20Bangalore.png">
+            <p>The Future of Real Estate Investments in Bangalore</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="related-card" onclick="location.href='Article-26.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
+            <p>Understanding Agricultural Land Measurement in India</p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                <p class="footer-text">
+                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                    YELAHANKA, BENGALURU - 64
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 95111 25552
+                </a>
+                <a href="mailto:contact@greensiri.in" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-regular fa-envelope"></i>
+                    contact@greensiri.in
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <div>
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo">
+                </div>
+                <p class="footer-tagline"></p>
+            </div>
+
+            <div class="footer-col footer-subscribe">
+                <h5>DO YOU HAVE ANY QUERY?</h5>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="example@email.com" required
+                        oninvalid="this.setCustomValidity('please enter valid email address')"
+                        oninput="this.setCustomValidity('')">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="subscribe-note">
+                    PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                </div>
+            </div>
+
+            <div class="footer-col footer-social">
+                <h5>SOCIAL MEDIA LINKS</h5>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; Copyright 2026
+                <span class="highlight">GREENSIRI PROPERTIES</span>.
+                All Rights Reserved |
+
+                Website Design by
+                <span class="highlight">PRIZMABRIXX</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>

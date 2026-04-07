@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lepakshi – A Hidden Gem for Resort Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* LOGO */
+        .nav-logo img {
+            height: 50px;
+        }
+
+        /* MENU */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: #000;
+            display: block;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+
+            .hamburger {
+                display: flex;
+                z-index: 2001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                background: rgba(0, 0, 0, 0.8);
+                transform: translateY(-100%);
+                transition: 0.4s;
+                z-index: 2000;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-menu a {
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        /* DEMO BACKGROUND */
+        body {
+            background: #fff;
+        }
+
+        /* ARTICLE */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .article {
+            padding: 40px 0 60px;
+        }
+
+        .article h1 {
+            font-family: 'Poppins', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #000;
+        }
+
+        .article img {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 30px;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #222;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: #fff;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <!-- LOGO -->
+        <div class="nav-logo">
+            <img
+                src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png">
+        </div>
+
+        <!-- MENU -->
+        <ul class="nav-menu">
+            <li><a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/" onclick="closeMenu()">HOME</a></li>
+            <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
+            <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
+            <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
+            <li><a href="#">SHOT AT SITE</a></li>
+            <li><a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a></li>
+            <li><a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a></li>
+        </ul>
+
+        <!-- HAMBURGER -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </nav>
+
+    <section class="article container">
+        <h1>Lepakshi – A Hidden Gem for Resort Investment</h1>
+
+        <img
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20%E2%80%93%20A%20Hidden%20Gem%20for%20Resort%20Investment.png">
+
+
+        <p>Nestled in the picturesque landscapes of Andhra Pradesh, Lepakshi is emerging as an attractive destination
+            for resort investments. Known for its rich history, architectural marvels, and tranquil surroundings, this
+            hidden gem offers immense potential for those looking to invest in sustainable and profitable hospitality
+            ventures. With increasing interest in managed farmlands near Lepakshi, investors are eyeing this location as
+            the next big thing in eco-tourism and luxury retreats. <br>
+        </p>
+
+        <h2>Why Invest in a Resort in Lepakshi?</h2>
+
+        <h3>1. Growing Tourism & Cultural Significance</h3>
+        <p>
+            Lepakshi is home to breathtaking heritage sites, including the famous Veerabhadra Temple, which attracts
+            thousands of tourists annually. The region’s historical significance, combined with its serene environment,
+            makes it an ideal location for a resort investment catering to history lovers, spiritual seekers, and
+            leisure travelers. <br>
+        </p>
+
+        <h3>2. Proximity to Bangalore & Connectivity</h3>
+        <p>
+            Strategically located near Bangalore, Lepakshi enjoys excellent connectivity through NH 44 and is just a
+            short drive from Kempegowda International Airport. The ease of access makes it a perfect getaway destination
+            for urban dwellers looking to unwind in a tranquil setting. <br>
+        </p>
+
+        <h3>3. Rising Demand for Eco-Resorts & Farmstays</h3>
+        <p>
+            With the growing trend of sustainable tourism, travelers are increasingly seeking farm resorts and
+            eco-friendly accommodations. Investing in a managed farmland near Lepakshi provides the unique opportunity
+            to develop farm resorts, wellness retreats, and nature lodges, catering to this rising demand. <br>
+        </p>
+
+        <h2>Best Investment Options in Lepakshi</h2>
+
+        <h3>1. Managed Farmlands & Eco-Resorts</h3>
+        <p>
+            Investing in managed farmlands near Lepakshi allows you to create a seamless blend of agriculture and
+            hospitality. Green Siri Tarini Farms is an excellent example of how curated gated community farmlands can be
+            transformed into high-end eco-tourism resorts, offering both recreational and agrarian experiences to
+            visitors. <br>
+        </p>
+
+        <h3>2. Luxury Farmhouse Retreats</h3>
+        <p>
+            For those looking for exclusivity, farmhouse plots in Bangalore’s outskirts, including Lepakshi, present a
+            lucrative opportunity. These farmhouse-style resorts can cater to elite travelers and corporate retreats,
+            providing an escape from the city’s hustle and bustle. <br>
+        </p>
+
+        <h3>3. Budget & Boutique Resorts</h3>
+        <p>
+            With farmland near Chikkaballapur and farmplots near Devanahalli gaining traction, budget-friendly and
+            boutique resorts are also on the rise. Investors can tap into this segment by creating charming boutique
+            stays that offer a mix of affordability and exclusivity. <br>
+        </p>
+
+        <h2>Benefits of Investing in a Resort in Lepakshi</h2>
+        <p>
+            • Low Land Acquisition Cost: Compared to Bangalore, farmland prices in Bangalore are significantly higher
+            than those in Lepakshi, making it a cost-effective investment. <br>
+            • Steady Tourist Footfall: Cultural tourism, weekend getaways, and spiritual tourism ensure a steady flow of
+            visitors. <br>
+            • High ROI Potential: As eco-tourism gains popularity, resorts in scenic and culturally rich locations like
+            Lepakshi promise excellent returns on investment. <br>
+            • Sustainability & Green Living: Resort investments that align with sustainable farming and eco-living
+            initiatives attract conscious travelers. <br>
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>
+            Lepakshi is undoubtedly one of the most promising hidden gems for resort investments. With its seamless
+            blend of culture, history, and natural beauty, the region offers unparalleled potential for hospitality
+            entrepreneurs and real estate investors. Whether you are looking at managed farmlands, luxury farmhouses, or
+            boutique resorts, this is the right time to explore investment opportunities in Lepakshi. <br>
+        </p>
+
+        <h2>Start Your Investment Journey Today!</h2>
+        <p>
+            Looking to invest in a resort, farmhouse, or managed farmland near Lepakshi? Explore opportunities with
+            GreenSiri Tarini Farms and take the first step towards a profitable and sustainable real estate venture.
+            <br>
+        </p>
+
+    </section>
+
+    <section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+    <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="related-card" onclick="location.href='Article-11.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20vs%20Nandi%20Hills%20Where%20Should%20You%20Invest%20in%202026.png">
+            <p>Lepakshi vs Nandi Hills Where Should You Invest in 2026</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="related-card" onclick="location.href='Article-24.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Top%205%20Reasons%20Why%20Buying%20Farmland%20Near%20Bangalore%20is%20a%20Smart%20Investment_2.png">
+            <p>Top 5 Reasons Why Buying Farmland Near Bangalore is a Smart Investment</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="related-card" onclick="location.href='Article-20.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Future%20of%20Real%20Estate%20Investments%20in%20Bangalore.png">
+            <p>The Future of Real Estate Investments in Bangalore</p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                <p class="footer-text">
+                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                    YELAHANKA, BENGALURU - 64
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 95111 25552
+                </a>
+                <a href="mailto:contact@greensiri.in" class="footer-contact-item" style="color: white; text-decoration: none;">
+                    <i class="fa-regular fa-envelope"></i>
+                    contact@greensiri.in
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <div>
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo">
+                </div>
+                <p class="footer-tagline"></p>
+            </div>
+
+            <div class="footer-col footer-subscribe">
+                <h5>DO YOU HAVE ANY QUERY?</h5>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="example@email.com" required
+                        oninvalid="this.setCustomValidity('please enter valid email address')"
+                        oninput="this.setCustomValidity('')">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="subscribe-note">
+                    PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                </div>
+            </div>
+
+            <div class="footer-col footer-social">
+                <h5>SOCIAL MEDIA LINKS</h5>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; Copyright 2026
+                <span class="highlight">GREENSIRI PROPERTIES</span>.
+                All Rights Reserved |
+
+                Website Design by
+                <span class="highlight">PRIZMABRIXX</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>
