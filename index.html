@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
     <!-- Fonnt Awesome 6.4.0 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -288,6 +289,21 @@
 
         }
 
+        /* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    display: block;
+}
+
         /*
          * RESPONSIVE ADJUSTMENTS
          * - Hide or adjust on mobile devices
@@ -312,6 +328,83 @@
                 padding: 6px 12px;
                 right: 50px;
             }
+
+            .featured-post {
+            display: column;
+            gap: 50px;
+            margin-bottom: 80px;
+            align-items: stretch;
+        }
+
+         .featured-post {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .featured-image-box {
+        width: 100%;
+    }
+
+    .featured-image-box img {
+        min-height: 220px;
+    }
+
+    .featured-text-box {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .featured-text-box h2 {
+        font-size: 20px;
+    }
+
+    .featured-text-box h4 {
+        font-size: 14px;
+    }
+
+    .featured-text-box p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+     .navbar {
+        padding: 20px;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: #0d110d;
+        flex-direction: column;
+        padding: 80px 20px;
+        gap: 20px;
+        transition: 0.4s;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+}
+}
+🔥 BONUS (Recommended – looks premium)
+
+Make hero text smaller on mobile:
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 12vw;
+    }
+
+
         }
 
         /* Hide social bar when footer is in view */
@@ -785,506 +878,521 @@
 <body>
 
 
-    <div class="social-floating">
-        <div class="social-bg-image">
+<div class="social-floating">
+    <div class="social-bg-image">
 
-            <!--
-        ══════════════════════════════════════════════════════
-        SECTION 1: ENQUIRY NOW
-        ══════════════════════════════════════════════════════
-        CUSTOMIZE:
-        - Change href to your enquiry page URL
-        - Adjust top/height values to match PNG layout
-        - Modify label text
-        -->
-            <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-enquiry"
-                target="_blank">
-                <div class="social-label">ENQUIRY NOW</div>
+        <!--
+    ══════════════════════════════════════════════════════
+    SECTION 1: ENQUIRY NOW
+    ══════════════════════════════════════════════════════
+    CUSTOMIZE:
+    - Change href to your enquiry page URL
+    - Adjust top/height values to match PNG layout
+    - Modify label text
+    -->
+        <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-enquiry"
+           target="_blank">
+            <div class="social-label">ENQUIRY NOW</div>
+        </a>
+
+        <!--
+    ══════════════════════════════════════════════════════
+    SECTION 2: CALL
+    ══════════════════════════════════════════════════════
+    CUSTOMIZE:
+    - Change phone number in href (9119925552)
+    - This opens phone dialer on mobile/desktop
+    - Adjust position to match call icon in PNG
+    -->
+        <a href="tel:+919511125552" class="social-section social-call">
+            <div class="social-label">CALL NOW</div>
+        </a>
+
+        <!--
+   ══════════════════════════════════════════════════════
+   SECTION 3: WHATSAPP
+   ══════════════════════════════════════════════════════
+   CUSTOMIZE:
+   - Change phone number in href (919999999999)
+   - Modify pre-filled message after &text=
+   - Adjust position to match WhatsApp icon in PNG
+   -->
+        <a href="https://wa.me/919999999999?text=Hello%20Greensiri,%20I'm%20interested%20in%20your%20properties"
+           class="social-section social-whatsapp" target="_blank">
+            <div class="social-label">WHATSAPP</div>
+        </a>
+
+        <!--
+    ══════════════════════════════════════════════════════
+    SECTION 4: CONTACT US
+    ══════════════════════════════════════════════════════
+    CUSTOMIZE:
+    - Change href to your contact page URL
+    - Adjust position to match bottom icon in PNG
+    - Can also link to email: mailto:contact@greensiri.in
+    -->
+        <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-contact"
+           target="_blank">
+            <div class="social-label">CHAT-BOT</div>
+        </a>
+
+    </div>
+</div>
+
+<!-- --- Navbar --- -->
+<header class="navbar">
+
+    <div class="logo">
+        <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+             alt="Greensiri Logo" class="nav-logo">
+    </a>
+    </div>
+    </div>
+    <nav class="nav-links">
+        <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">HOME</a>
+        <a href="https://vatsalvarma.github.io/TarniFarms/">FARMS</a>
+        <a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/">RESIDENTIALS</a>
+        <a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/">VILLAS</a>
+        <a href="#">SHOT AT SITE</a>
+        <a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a>
+        <a href="#">BLOGS</a>
+        <a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a>
+    </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<!-- --- Hero Section --- -->
+<section class="hero">
+    <!-- Using a lush green Indian nature/village image similar to the girl reading on swing -->
+    <img class="hero-img"
+         src="https://raw.githubusercontent.com/vatsalvarma/Greensiri-blogs-/refs/heads/main/blogs%20hero.jpg%20(1).jpeg"
+         alt="Nature Farmhouse Background">
+    <div class="hero-bg-overlay"></div>
+    <h1 class="hero-title"></h1>
+</section>
+
+
+
+<!-- --- Main Content Section --- -->
+<main class="content">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <a href="#" class="tab active">FARMHOUSE</a>
+        <a href="#" class="tab">RESIDENTIAL</a>
+        <a href="#" class="tab">VILLA</a>
+    </div>
+    <!-- Featured Post -->
+    <div class="featured-post" onclick="location.href='Articles/Article-3.html'">
+
+        <div class="featured-image-box">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/A%20Beginner%E2%80%99s%20Guide%20to%20Buying%20Farmland%20in%20India.png"
+                 alt="Farmland Investment">
+
+            <div class="featured-overlay">
+                <h3>A Beginner’s Guide to Buying Farmland in India</h3>
+
+                <p>
+                    A complete guide covering legal checks, investment tips, and smart strategies to help you
+                    confidently invest in farmland in India.
+                </p>
+
+                <button class="read-more-btn">Read More</button>
+
+                <div class="slider-dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-text-box">
+            <h2>A Beginner’s Guide to Buying Farmland in India</h2>
+            <h4>Investment Guide</h4>
+
+            <p>
+                Discover everything you need to know before buying farmland in India. From understanding legal
+                requirements and land classifications to evaluating ROI and long-term value, this guide is designed
+                to help investors make informed decisions. Whether you are a first-time buyer or an experienced
+                investor, this article simplifies complex processes and gives you clarity on making the right
+                farmland investment.
+            </p>
+        </div>
+
+    </div>
+    <!-- Post Grid -->
+    <div class="posts-grid">
+
+        <div class="post-card" onclick="location.href='Articles/Article-1.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Living%20the%20Farm%20Life%20Might%20Be%20the%20Best%20Therapy%20You%E2%80%99ve%20Ever%20Tried.png">
+            </div>
+            <h3>Why Living the Farm Life Might Be the Best Therapy You’ve Ever Tried</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-2.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
+            </div>
+            <h3>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-4.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Buying%20Farmlands%20with%20Greensiri%20Tarini.png">
+            </div>
+            <h3>Benefits of Buying Farmlands with Greensiri Tarini</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-5.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Owning%20a%20Farmhouse%20in%20a%20Gated%20Community%20Near%20Bangalore.png">
+            </div>
+            <h3>Benefits of Owning a Farmhouse in a Gated Community Near Bangalore</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-6.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Bengaluru%E2%80%99s%20Green%20Side%20-%20Agri%20Tourism.png">
+            </div>
+            <h3>Bengaluru’s Green Side - Agri Tourism</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-7.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Health%20-%20Grow%20Medicinal%20Herbs%20%26%20Nutritious%20Greens%20at%20Greensiri%20Farmlands.png">
+            </div>
+            <h3>Cultivate Health - Grow Medicinal Herbs & Nutritious Greens at Greensiri Farmlands</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-8.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Life%20-%20Grow%20Your%20Own%20Farm%20Fresh%20Food%20at%20Greensiri%20Tarini%20Farms.png">
+            </div>
+            <h3>Cultivate Life - Grow Your Own Farm Fresh Food at Greensiri Tarini Farms</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-9.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Government%20Schemes%20Supporting%20Sustainable%20Agriculture%20in%20India.png">
+            </div>
+            <h3>Government Schemes Supporting Sustainable Agriculture in India</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-10.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20Real%20Estate%20Investment%20Agri-Tourism%20ROI%20Near%20Bangalore.png">
+            </div>
+            <h3>Lepakshi Real Estate Investment Agri-Tourism ROI Near Bangalore</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-11.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20vs%20Nandi%20Hills%20Where%20Should%20You%20Invest%20in%202026.png">
+            </div>
+            <h3>Lepakshi vs Nandi Hills Where Should You Invest in 2026</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-12.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20%E2%80%93%20A%20Hidden%20Gem%20for%20Resort%20Investment.png">
+            </div>
+            <h3>Lepakshi – A Hidden Gem for Resort Investment</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-13.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Managed%20Farmlands%20vs.%20Traditional%20Agriculture%20-%20Which%20Suits%20Bangalore%20Investors.png">
+            </div>
+            <h3>Managed Farmlands vs. Traditional Agriculture - Which Suits Bangalore Investors?</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-14.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Organic%20Farming%20in%20Bengaluru_1.png">
+            </div>
+            <h3>Organic Farming in Bengaluru</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-15.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Own%20Farmland%20Near%20Bangalore%20Airport%20with%20Greensiri%20Tarini%20Farms.png">
+            </div>
+            <h3>Own Farmland Near Bangalore Airport with Greensiri Tarini Farms</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-16.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Plant%20Beauty%2C%20Value%20%26%20Legacy%20-%20Trees%20for%20Your%20Farm%20with%20Greensiri.png">
+            </div>
+            <h3>Plant Beauty, Value, and Legacy: Trees for Your Farm with Greensiri</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-17.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Profitable%20Agricultural%20Investment%20Opportunities%20in%20Bengaluru.png">
+            </div>
+            <h3>Profitable Agricultural Investment Opportunities in Bengaluru</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-18.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/ROI%20of%20Investing%20in%20Farmlands.png">
+            </div>
+            <h3>Farmland Investment ROI Near Bangalore | Green Siri Tarini Farms</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-19.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Sustainable%20Living%20in%20Farmhouses.png">
+            </div>
+            <h3>Sustainable Living in Farmhouses</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-20.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Future%20of%20Real%20Estate%20Investments%20in%20Bangalore.png">
+            </div>
+            <h3>The Future of Real Estate Investments in Bangalore</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-21.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20growth%20of%20communities%20in%20bengaluru%20eco%20friendly%20.jpg">
+            </div>
+            <h3>The Growth of Communities in Bengaluru - Eco Friendly</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-22.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Timeless%20Charm%20of%20Farmhouses%20in%20Farmlands_1.png">
+            </div>
+            <h3>The Timeless Charm of Farmhouses in Farmlands</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-23.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Ultimate%20Guide%20to%20Investing%20in%20Managed%20Farmlands%20Near%20Bangalore.png">
+            </div>
+            <h3>The Ultimate Guide to Investing in Managed Farmlands Near Bangalore</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-24.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Top%205%20Reasons%20Why%20Buying%20Farmland%20Near%20Bangalore%20is%20a%20Smart%20Investment_2.png">
+            </div>
+            <h3>Top 5 Reasons Why Buying Farmland Near Bangalore is a Smart Investment</h3>
+            <p>Read More</p>
+        </div>
+
+
+
+        <div class="post-card" onclick="location.href='Articles/Article-26.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
+            </div>
+            <h3>Understanding Agricultural Land Measurement in India</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-27.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/What%20is%20managed%20farmland%20and%20how%20does%20work.png">
+            </div>
+            <h3>What is Managed Farmland? And How Does It Work</h3>
+            <p>Read More</p>
+        </div>
+
+        <div class="post-card" onclick="location.href='Articles/Article-28.html'">
+            <div class="post-img">
+                <img
+                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Managed%20Farmlands%20in%20Bangalore%20Are%20the%20Next%20Big%20Real%20Estate%20Investment.png">
+            </div>
+            <h3>Why Managed Farmlands in Bangalore Are the Next Big Real Estate Investment</h3>
+            <p>Read More</p>
+        </div>
+
+    </div>
+    <!-- Bottom Banner Image -->
+    <div class="bottom-banner" onclick="location.href='Articles/Article-29.html'">
+        <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse-Types-Hero.png"
+             alt="Top View Business Meeting Desktop">
+    </div>
+</main>
+
+<!-- --- Footer --- -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <span class="footer-bold">GREENSIRI INFRA LLP</span>
+            <p class="footer-text">
+                130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                YELAHANKA, BENGALURU - 64
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
+                <i class="fa-solid fa-phone"></i>
+                +91 95111 25552
             </a>
-
-            <!--
-        ══════════════════════════════════════════════════════
-        SECTION 2: CALL
-        ══════════════════════════════════════════════════════
-        CUSTOMIZE:
-        - Change phone number in href (9119925552)
-        - This opens phone dialer on mobile/desktop
-        - Adjust position to match call icon in PNG
-        -->
-            <a href="tel:+919511125552" class="social-section social-call">
-                <div class="social-label">CALL NOW</div>
+            <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+               style="color: white; text-decoration: none;">
+                <i class="fa-regular fa-envelope"></i>
+                contact@greensiri.in
             </a>
+        </div>
 
-            <!--
-       ══════════════════════════════════════════════════════
-       SECTION 3: WHATSAPP
-       ══════════════════════════════════════════════════════
-       CUSTOMIZE:
-       - Change phone number in href (919999999999)
-       - Modify pre-filled message after &text=
-       - Adjust position to match WhatsApp icon in PNG
-       -->
-            <a href="https://wa.me/919999999999?text=Hello%20Greensiri,%20I'm%20interested%20in%20your%20properties"
-                class="social-section social-whatsapp" target="_blank">
-                <div class="social-label">WHATSAPP</div>
-            </a>
+        <div class="footer-col">
+            <div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                     class="footer-logo">
+            </div>
+            <p class="footer-tagline"></p>
+        </div>
 
-            <!--
-        ══════════════════════════════════════════════════════
-        SECTION 4: CONTACT US
-        ══════════════════════════════════════════════════════
-        CUSTOMIZE:
-        - Change href to your contact page URL
-        - Adjust position to match bottom icon in PNG
-        - Can also link to email: mailto:contact@greensiri.in
-        -->
-            <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-contact"
-                target="_blank">
-                <div class="social-label">CHAT-BOT</div>
-            </a>
+        <div class="footer-col footer-subscribe">
+            <h5>DO YOU HAVE ANY QUERY?</h5>
+            <form class="subscribe-form">
+                <input type="email" placeholder="example@email.com" required
+                       oninvalid="this.setCustomValidity('please enter valid email address')"
+                       oninput="this.setCustomValidity('')">
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+            <div class="subscribe-note">
+                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+            </div>
+        </div>
 
+        <div class="footer-col footer-social">
+            <h5>SOCIAL MEDIA LINKS</h5>
+            <div class="footer-social-icons">
+                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
+                        class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                   target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
         </div>
     </div>
 
-    <!-- --- Navbar --- -->
-    <header class="navbar">
-        <div class="logo">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
-                alt="Greensiri Logo" class="nav-logo">
-        </div>
-        </div>
-        <nav class="nav-links">
-            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">HOME</a>
-            <a href="https://vatsalvarma.github.io/TarniFarms/">FARMS</a>
-            <a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/">RESIDENTIALS</a>
-            <a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/">VILLAS</a>
-            <a href="#">SHOT AT SITE</a>
-            <a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a>
-            <a href="#">BLOGS</a>
-            <a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a>
-        </nav>
-    </header>
-
-    <!-- --- Hero Section --- -->
-    <section class="hero">
-        <!-- Using a lush green Indian nature/village image similar to the girl reading on swing -->
-        <img class="hero-img"
-            src="https://raw.githubusercontent.com/vatsalvarma/Greensiri-blogs-/refs/heads/main/blogs%20hero.jpg%20(1).jpeg"
-            alt="Nature Farmhouse Background">
-        <div class="hero-bg-overlay"></div>
-        <h1 class="hero-title"></h1>
-    </section>
+    <div class="footer-bottom">
+        <p>
+            &copy; Copyright 2026
+            <span class="highlight">GREENSIRI PROPERTIES</span>.
+            All Rights Reserved |
+            Website Design by
+            <span class="highlight">PRIZMABRIXX</span>
+        </p>
+    </div>
+</footer>
 
 
+<script>
+    document.querySelectorAll('.post-card').forEach((card, index) => {
+        card.addEventListener('click', () => {
+            // Add your external blog URLs here
+            const links = [
+                "https://example.com/blog1",
+                "https://example.com/blog2",
+                "https://example.com/blog3",
+                "https://example.com/blog4",
+                "https://example.com/blog5",
+                "https://example.com/blog6",
+                "https://example.com/blog7",
+                "https://example.com/blog8",
+                "https://example.com/blog9"
+            ];
 
-    <!-- --- Main Content Section --- -->
-    <main class="content">
-
-        <!-- Tabs -->
-        <div class="tabs">
-            <a href="#" class="tab active">FARMHOUSE</a>
-            <a href="#" class="tab">RESIDENTIAL</a>
-            <a href="#" class="tab">VILLA</a>
-        </div>
-        <!-- Featured Post -->
-        <div class="featured-post" onclick="location.href='Articles/Article-3.html'">
-
-            <div class="featured-image-box">
-                <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/A%20Beginner%E2%80%99s%20Guide%20to%20Buying%20Farmland%20in%20India.png"
-                    alt="Farmland Investment">
-
-                <div class="featured-overlay">
-                    <h3>A Beginner’s Guide to Buying Farmland in India</h3>
-
-                    <p>
-                        A complete guide covering legal checks, investment tips, and smart strategies to help you
-                        confidently invest in farmland in India.
-                    </p>
-
-                    <button class="read-more-btn">Read More</button>
-
-                    <div class="slider-dots">
-                        <span class="dot"></span>
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-text-box">
-                <h2>A Beginner’s Guide to Buying Farmland in India</h2>
-                <h4>Investment Guide</h4>
-
-                <p>
-                    Discover everything you need to know before buying farmland in India. From understanding legal
-                    requirements and land classifications to evaluating ROI and long-term value, this guide is designed
-                    to help investors make informed decisions. Whether you are a first-time buyer or an experienced
-                    investor, this article simplifies complex processes and gives you clarity on making the right
-                    farmland investment.
-                </p>
-            </div>
-
-        </div>
-        <!-- Post Grid -->
-        <div class="posts-grid">
-
-            <div class="post-card" onclick="location.href='Articles/Article-1.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Living%20the%20Farm%20Life%20Might%20Be%20the%20Best%20Therapy%20You%E2%80%99ve%20Ever%20Tried.png">
-                </div>
-                <h3>Why Living the Farm Life Might Be the Best Therapy You’ve Ever Tried</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-2.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
-                </div>
-                <h3>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-4.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Buying%20Farmlands%20with%20Greensiri%20Tarini.png">
-                </div>
-                <h3>Benefits of Buying Farmlands with Greensiri Tarini</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-5.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Owning%20a%20Farmhouse%20in%20a%20Gated%20Community%20Near%20Bangalore.png">
-                </div>
-                <h3>Benefits of Owning a Farmhouse in a Gated Community Near Bangalore</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-6.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Bengaluru%E2%80%99s%20Green%20Side%20-%20Agri%20Tourism.png">
-                </div>
-                <h3>Bengaluru’s Green Side - Agri Tourism</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-7.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Health%20-%20Grow%20Medicinal%20Herbs%20%26%20Nutritious%20Greens%20at%20Greensiri%20Farmlands.png">
-                </div>
-                <h3>Cultivate Health - Grow Medicinal Herbs & Nutritious Greens at Greensiri Farmlands</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-8.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Life%20-%20Grow%20Your%20Own%20Farm%20Fresh%20Food%20at%20Greensiri%20Tarini%20Farms.png">
-                </div>
-                <h3>Cultivate Life - Grow Your Own Farm Fresh Food at Greensiri Tarini Farms</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-9.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Government%20Schemes%20Supporting%20Sustainable%20Agriculture%20in%20India.png">
-                </div>
-                <h3>Government Schemes Supporting Sustainable Agriculture in India</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-10.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20Real%20Estate%20Investment%20Agri-Tourism%20ROI%20Near%20Bangalore.png">
-                </div>
-                <h3>Lepakshi Real Estate Investment Agri-Tourism ROI Near Bangalore</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-11.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20vs%20Nandi%20Hills%20Where%20Should%20You%20Invest%20in%202026.png">
-                </div>
-                <h3>Lepakshi vs Nandi Hills Where Should You Invest in 2026</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-12.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20%E2%80%93%20A%20Hidden%20Gem%20for%20Resort%20Investment.png">
-                </div>
-                <h3>Lepakshi – A Hidden Gem for Resort Investment</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-13.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Managed%20Farmlands%20vs.%20Traditional%20Agriculture%20-%20Which%20Suits%20Bangalore%20Investors.png">
-                </div>
-                <h3>Managed Farmlands vs. Traditional Agriculture - Which Suits Bangalore Investors?</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-14.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Organic%20Farming%20in%20Bengaluru_1.png">
-                </div>
-                <h3>Organic Farming in Bengaluru</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-15.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Own%20Farmland%20Near%20Bangalore%20Airport%20with%20Greensiri%20Tarini%20Farms.png">
-                </div>
-                <h3>Own Farmland Near Bangalore Airport with Greensiri Tarini Farms</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-16.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Plant%20Beauty%2C%20Value%20%26%20Legacy%20-%20Trees%20for%20Your%20Farm%20with%20Greensiri.png">
-                </div>
-                <h3>Plant Beauty, Value, and Legacy: Trees for Your Farm with Greensiri</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-17.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Profitable%20Agricultural%20Investment%20Opportunities%20in%20Bengaluru.png">
-                </div>
-                <h3>Profitable Agricultural Investment Opportunities in Bengaluru</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-18.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/ROI%20of%20Investing%20in%20Farmlands.png">
-                </div>
-                <h3>Farmland Investment ROI Near Bangalore | Green Siri Tarini Farms</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-19.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Sustainable%20Living%20in%20Farmhouses.png">
-                </div>
-                <h3>Sustainable Living in Farmhouses</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-20.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Future%20of%20Real%20Estate%20Investments%20in%20Bangalore.png">
-                </div>
-                <h3>The Future of Real Estate Investments in Bangalore</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-21.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20growth%20of%20communities%20in%20bengaluru%20eco%20friendly%20.jpg">
-                </div>
-                <h3>The Growth of Communities in Bengaluru - Eco Friendly</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-22.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Timeless%20Charm%20of%20Farmhouses%20in%20Farmlands_1.png">
-                </div>
-                <h3>The Timeless Charm of Farmhouses in Farmlands</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-23.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Ultimate%20Guide%20to%20Investing%20in%20Managed%20Farmlands%20Near%20Bangalore.png">
-                </div>
-                <h3>The Ultimate Guide to Investing in Managed Farmlands Near Bangalore</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-24.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Top%205%20Reasons%20Why%20Buying%20Farmland%20Near%20Bangalore%20is%20a%20Smart%20Investment_2.png">
-                </div>
-                <h3>Top 5 Reasons Why Buying Farmland Near Bangalore is a Smart Investment</h3>
-                <p>Read More</p>
-            </div>
-
-
-
-            <div class="post-card" onclick="location.href='Articles/Article-26.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
-                </div>
-                <h3>Understanding Agricultural Land Measurement in India</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-27.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/What%20is%20managed%20farmland%20and%20how%20does%20work.png">
-                </div>
-                <h3>What is Managed Farmland? And How Does It Work</h3>
-                <p>Read More</p>
-            </div>
-
-            <div class="post-card" onclick="location.href='Articles/Article-28.html'">
-                <div class="post-img">
-                    <img
-                        src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Managed%20Farmlands%20in%20Bangalore%20Are%20the%20Next%20Big%20Real%20Estate%20Investment.png">
-                </div>
-                <h3>Why Managed Farmlands in Bangalore Are the Next Big Real Estate Investment</h3>
-                <p>Read More</p>
-            </div>
-
-        </div>
-        <!-- Bottom Banner Image -->
-        <div class="bottom-banner" onclick="location.href='Articles/Article-29.html'">
-            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Farmhouse-Types-Hero.png"
-                alt="Top View Business Meeting Desktop">
-        </div>
-    </main>
-
-    <!-- --- Footer --- -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <span class="footer-bold">GREENSIRI INFRA LLP</span>
-                <p class="footer-text">
-                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
-                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
-                    YELAHANKA, BENGALURU - 64
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
-                    <i class="fa-solid fa-phone"></i>
-                    +91 95111 25552
-                </a>
-                <a href="mailto:contact@greensiri.in" class="footer-contact-item"
-                    style="color: white; text-decoration: none;">
-                    <i class="fa-regular fa-envelope"></i>
-                    contact@greensiri.in
-                </a>
-            </div>
-
-            <div class="footer-col">
-                <div>
-                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
-                        class="footer-logo">
-                </div>
-                <p class="footer-tagline"></p>
-            </div>
-
-            <div class="footer-col footer-subscribe">
-                <h5>DO YOU HAVE ANY QUERY?</h5>
-                <form class="subscribe-form">
-                    <input type="email" placeholder="example@email.com" required
-                        oninvalid="this.setCustomValidity('please enter valid email address')"
-                        oninput="this.setCustomValidity('')">
-                    <button type="submit">SUBSCRIBE</button>
-                </form>
-                <div class="subscribe-note">
-                    PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
-                </div>
-            </div>
-
-            <div class="footer-col footer-social">
-                <h5>SOCIAL MEDIA LINKS</h5>
-                <div class="footer-social-icons">
-                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@Greensiri" target="_blank"><i
-                            class="fa-brands fa-youtube"></i></a>
-                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i
-                            class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
-                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>
-                &copy; Copyright 2026
-                <span class="highlight">GREENSIRI PROPERTIES</span>.
-                All Rights Reserved |
-                Website Design by
-                <span class="highlight">PRIZMABRIXX</span>
-            </p>
-        </div>
-    </footer>
-
-
-    <script>
-        document.querySelectorAll('.post-card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                // Add your external blog URLs here
-                const links = [
-                    "https://example.com/blog1",
-                    "https://example.com/blog2",
-                    "https://example.com/blog3",
-                    "https://example.com/blog4",
-                    "https://example.com/blog5",
-                    "https://example.com/blog6",
-                    "https://example.com/blog7",
-                    "https://example.com/blog8",
-                    "https://example.com/blog9"
-                ];
-
-                window.open(links[index], "_blank");
-            });
+            window.open(links[index], "_blank");
         });
-    </script>
+    });
+</script>
 
-    <script>
-        const reveals = document.querySelectorAll('.post-card, .featured-post');
+<script>
+    const reveals = document.querySelectorAll('.post-card, .featured-post');
 
-        function revealOnScroll() {
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
+    function revealOnScroll() {
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
 
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        }
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('active');
+            }
+        });
+    }
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-    </script>
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+<script>
+    function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    }
+</script>
 
 </body>
 
