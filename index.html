@@ -1,5 +1,7 @@
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -422,10 +424,8 @@
         right: 0;
     }
 }
-}
-🔥 BONUS (Recommended – looks premium)
 
-Make hero text smaller on mobile:
+
 
 @media (max-width: 768px) {
     .hero-title {
@@ -902,6 +902,130 @@ Make hero text smaller on mobile:
         .post-card:hover::after {
             opacity: 1;
         }
+        /* ================= CHATBOT WIDGET ================= */
+.chatbot-wrapper {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: none;
+    z-index: 120;
+}
+
+.chatbot-wrapper.open {
+    display: flex;
+}
+
+.chatbot-window {
+    width: 320px;
+    height: 420px;
+    background: #0f1c18;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    color: #e6f4ec;
+    overflow: hidden;
+    resize: both;
+    min-width: 240px;
+    min-height: 280px;
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: linear-gradient(120deg, #1c3b2f, #164331);
+    cursor: move;
+    user-select: none;
+}
+
+.chatbot-title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.chatbot-title i {
+    color: #7cf2b0;
+}
+
+.chatbot-close {
+    background: transparent;
+    border: none;
+    color: #e6f4ec;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chatbot-body {
+    flex: 1;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+    background: linear-gradient(180deg, rgba(14, 31, 25, 0.95), rgba(10, 20, 17, 0.96));
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    line-height: 1.4;
+    font-size: 13px;
+}
+
+.chat-message.bot {
+    background: rgba(124, 242, 176, 0.12);
+    border: 1px solid rgba(124, 242, 176, 0.3);
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    align-self: flex-end;
+}
+
+.chatbot-footer {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(12, 24, 20, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #e6f4ec;
+    outline: none;
+}
+
+.chatbot-send {
+    padding: 0 14px;
+    border: none;
+    border-radius: 10px;
+    background: #7cf2b0;
+    color: #0f1c18;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ================= MOBILE RESPONSIVE STYLES ================= */
+@media (max-width: 768px) {
+    .chatbot-window {
+        width: 90vw;
+        height: 60vh;
+    }
+}
     </style>
 </head>
 
@@ -934,41 +1058,55 @@ Make hero text smaller on mobile:
     - This opens phone dialer on mobile/desktop
     - Adjust position to match call icon in PNG
     -->
-        <a href="tel:+919511125552" class="social-section social-call">
+           <a href="tel:+919511125552"
+           class="social-section social-call">
             <div class="social-label">CALL NOW</div>
         </a>
 
         <!--
-   ══════════════════════════════════════════════════════
-   SECTION 3: WHATSAPP
-   ══════════════════════════════════════════════════════
-   CUSTOMIZE:
-   - Change phone number in href (919999999999)
-   - Modify pre-filled message after &text=
-   - Adjust position to match WhatsApp icon in PNG
-   -->
-        <a href="https://wa.me/919999999999?text=Hello%20Greensiri,%20I'm%20interested%20in%20your%20properties"
-           class="social-section social-whatsapp" target="_blank">
+       ══════════════════════════════════════════════════════
+       SECTION 3: WHATSAPP
+       ══════════════════════════════════════════════════════
+       CUSTOMIZE:
+       - Change phone number in href (919999999999)
+       - Modify pre-filled message after &text=
+       - Adjust position to match WhatsApp icon in PNG
+       -->
+        <a href="https://wa.me/919511125552?text=Hello%20Greensiri,%20I'm%20interested%20in%20your%20properties"
+           class="social-section social-whatsapp"
+           target="_blank">
             <div class="social-label">WHATSAPP</div>
         </a>
 
-        <!--
-    ══════════════════════════════════════════════════════
-    SECTION 4: CONTACT US
-    ══════════════════════════════════════════════════════
-    CUSTOMIZE:
-    - Change href to your contact page URL
-    - Adjust position to match bottom icon in PNG
-    - Can also link to email: mailto:contact@greensiri.in
-    -->
-        <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-contact"
-           target="_blank">
+        <a href="#"
+           class="social-section social-contact"
+           id="chatbotToggle"
+           role="button">
             <div class="social-label">CHAT-BOT</div>
         </a>
-
     </div>
 </div>
 
+<!-- Chatbot widget -->
+<div class="chatbot-wrapper" id="chatbotWrapper">
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header" id="chatbotDragHandle">
+            <div class="chatbot-title">
+                <i class="fa-solid fa-robot"></i>
+                <span>Green Siri</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose" aria-label="Close chatbot">&times;</button>
+        </div>
+        <div class="chatbot-body" id="chatbotMessages">
+            <div class="chat-message bot">Hi, I'm Green Siri. Ask me anything about the project.</div>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type a message..."
+                   autocomplete="off">
+            <button class="chatbot-send" id="chatbotSend">Send</button>
+        </div>
+    </div>
+</div>
 <!-- --- Navbar --- -->
 <header class="navbar">
 
@@ -1411,12 +1549,107 @@ Make hero text smaller on mobile:
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
+
+    // =====================================================================
+// CHATBOT WIDGET
+// =====================================================================
+const chatbotWrapper = document.getElementById('chatbotWrapper');
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+const chatbotMessages = document.getElementById('chatbotMessages');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotDragHandle = document.getElementById('chatbotDragHandle');
+
+function openChatbot() {
+    chatbotWrapper.classList.add('open');
+    chatbotInput.focus();
+}
+
+function closeChatbot() {
+    chatbotWrapper.classList.remove('open');
+}
+
+function addMessage(text, type) {
+    const bubble = document.createElement('div');
+    bubble.className = `chat-message ${type}`;
+    bubble.textContent = text;
+    chatbotMessages.appendChild(bubble);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function respondToMessage(message) {
+    const normalized = message.trim().toLowerCase();
+    if (['hi', 'hello', 'hey'].includes(normalized)) {
+        addMessage('Hi, this is Green Siri.', 'bot');
+    } else {
+        addMessage('Thanks for reaching out! Share your query and we will get back to you.', 'bot');
+    }
+}
+
+function sendMessage() {
+    const text = chatbotInput.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    chatbotInput.value = '';
+    respondToMessage(text);
+}
+
+// Event Listeners for Chat Functionality
+chatbotToggle?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openChatbot();
+});
+
+chatbotClose?.addEventListener('click', closeChatbot);
+chatbotSend?.addEventListener('click', sendMessage);
+chatbotInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+// Drag to reposition logic
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let startRight = 0;
+let startBottom = 0;
+
+function handleDragStart(e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    const rect = chatbotWrapper.getBoundingClientRect();
+    startRight = window.innerWidth - rect.right;
+    startBottom = window.innerHeight - rect.bottom;
+    document.addEventListener('pointermove', handleDragMove);
+    document.addEventListener('pointerup', handleDragEnd);
+}
+
+function handleDragMove(e) {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+    chatbotWrapper.style.right = `${Math.max(0, startRight - deltaX)}px`;
+    chatbotWrapper.style.bottom = `${Math.max(0, startBottom - deltaY)}px`;
+}
+
+function handleDragEnd() {
+    isDragging = false;
+    document.removeEventListener('pointermove', handleDragMove);
+    document.removeEventListener('pointerup', handleDragEnd);
+}
+
+chatbotDragHandle?.addEventListener('pointerdown', handleDragStart);
 </script>
 
 <script>
     function toggleMenu() {
         document.querySelector(".nav-links").classList.toggle("active");
     }
+
+
+
 </script>
 
 </body>
