@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +31,7 @@
 
         /* --- Navbar --- */
         .navbar {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -293,19 +290,19 @@
         }
 
         /* Hamburger */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-}
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
 
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: white;
-    display: block;
-}
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            display: block;
+        }
 
         /*
          * RESPONSIVE ADJUSTMENTS
@@ -332,105 +329,84 @@
                 right: 50px;
             }
 
-            .tab{
-            display:none;
+            .tab {
+                display: none;
 
             }
 
-              /* FOOTER FIX */
-                .footer-grid {
-                  flex-direction: column;
-                   }
-
-                     .footer-col {
-                   border-right: none;
-        padding: 20px 0;
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-
-
-    .footer-text {
-        white-space: normal;
-    }
-
-    .subscribe-note {
-        white-space: normal;
-    }
+            .featured-post {
+                display: column;
+                gap: 50px;
+                margin-bottom: 80px;
+                align-items: stretch;
+            }
 
             .featured-post {
-            display: column;
-            gap: 50px;
-            margin-bottom: 80px;
-            align-items: stretch;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .featured-image-box {
+                width: 100%;
+            }
+
+            .featured-image-box img {
+                min-height: 220px;
+            }
+
+            .featured-text-box {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .featured-text-box h2 {
+                font-size: 20px;
+            }
+
+            .featured-text-box h4 {
+                font-size: 14px;
+            }
+
+            .featured-text-box p {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .navbar {
+                padding: 20px;
+                align-items: center;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: #0d110d;
+                flex-direction: column;
+                padding: 80px 20px;
+                gap: 20px;
+                transition: 0.4s;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
         }
 
-         .featured-post {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .featured-image-box {
-        width: 100%;
-    }
-
-    .featured-image-box img {
-        min-height: 220px;
-    }
-
-    .featured-text-box {
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .featured-text-box h2 {
-        font-size: 20px;
-    }
-
-    .featured-text-box h4 {
-        font-size: 14px;
-    }
-
-    .featured-text-box p {
-        font-size: 13px;
-        line-height: 1.6;
-    }
-     .navbar {
-        padding: 20px;
-        align-items: center;
-    }
-
-    .hamburger {
-        display: flex;
-        z-index: 1001;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 70%;
-        background: #0d110d;
-        flex-direction: column;
-        padding: 80px 20px;
-        gap: 20px;
-        transition: 0.4s;
-        z-index: 1000;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-}
 
 
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 12vw;
-    }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 12vw;
+            }
 
 
         }
@@ -620,6 +596,22 @@
 
 
         /* --- Post Grid --- */
+
+        .post-card {
+            text-decoration: none;
+            /* Removes the underline */
+            color: white;
+            /* Changes the text back to white */
+            display: block;
+            /* Ensures the whole card remains clickable */
+        }
+
+        /* Optional: If you want to make sure the h3 and p inside the card are also strictly white */
+        .post-card h3,
+        .post-card p {
+            color: white;
+        }
+
         .posts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -627,7 +619,6 @@
         }
 
         .post-card {
-            display: flex;
             flex-direction: column;
         }
 
@@ -679,8 +670,7 @@
             filter: brightness(0.9);
         }
 
-        /* --- Footer --- */
-          /* FOOTER */
+        /* FOOTER */
         footer {
             background-color: #0b0b0b;
             color: white;
@@ -863,6 +853,26 @@
             font-weight: 500;
         }
 
+        /* ================= RESPONSIVE (MOBILE OPTIMIZATION) ================= */
+        @media(max-width: 900px) {
+            .footer-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .footer-col {
+                border-right: none;
+                padding: 0;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .subscribe-form {
+                align-items: center;
+            }
+        }
 
         .post-card {
             cursor: pointer;
@@ -902,130 +912,131 @@
         .post-card:hover::after {
             opacity: 1;
         }
+
         /* ================= CHATBOT WIDGET ================= */
-.chatbot-wrapper {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    display: none;
-    z-index: 120;
-}
+        .chatbot-wrapper {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: none;
+            z-index: 120;
+        }
 
-.chatbot-wrapper.open {
-    display: flex;
-}
+        .chatbot-wrapper.open {
+            display: flex;
+        }
 
-.chatbot-window {
-    width: 320px;
-    height: 420px;
-    background: #0f1c18;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    color: #e6f4ec;
-    overflow: hidden;
-    resize: both;
-    min-width: 240px;
-    min-height: 280px;
-}
+        .chatbot-window {
+            width: 320px;
+            height: 420px;
+            background: #0f1c18;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            color: #e6f4ec;
+            overflow: hidden;
+            resize: both;
+            min-width: 240px;
+            min-height: 280px;
+        }
 
-.chatbot-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 14px;
-    background: linear-gradient(120deg, #1c3b2f, #164331);
-    cursor: move;
-    user-select: none;
-}
+        .chatbot-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            background: linear-gradient(120deg, #1c3b2f, #164331);
+            cursor: move;
+            user-select: none;
+        }
 
-.chatbot-title {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
+        .chatbot-title {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-.chatbot-title i {
-    color: #7cf2b0;
-}
+        .chatbot-title i {
+            color: #7cf2b0;
+        }
 
-.chatbot-close {
-    background: transparent;
-    border: none;
-    color: #e6f4ec;
-    cursor: pointer;
-    font-size: 16px;
-}
+        .chatbot-close {
+            background: transparent;
+            border: none;
+            color: #e6f4ec;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-.chatbot-body {
-    flex: 1;
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow: auto;
-    background: linear-gradient(180deg, rgba(14, 31, 25, 0.95), rgba(10, 20, 17, 0.96));
-}
+        .chatbot-body {
+            flex: 1;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: auto;
+            background: linear-gradient(180deg, rgba(14, 31, 25, 0.95), rgba(10, 20, 17, 0.96));
+        }
 
-.chat-message {
-    max-width: 85%;
-    padding: 10px 12px;
-    border-radius: 12px;
-    line-height: 1.4;
-    font-size: 13px;
-}
+        .chat-message {
+            max-width: 85%;
+            padding: 10px 12px;
+            border-radius: 12px;
+            line-height: 1.4;
+            font-size: 13px;
+        }
 
-.chat-message.bot {
-    background: rgba(124, 242, 176, 0.12);
-    border: 1px solid rgba(124, 242, 176, 0.3);
-    align-self: flex-start;
-}
+        .chat-message.bot {
+            background: rgba(124, 242, 176, 0.12);
+            border: 1px solid rgba(124, 242, 176, 0.3);
+            align-self: flex-start;
+        }
 
-.chat-message.user {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    align-self: flex-end;
-}
+        .chat-message.user {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            align-self: flex-end;
+        }
 
-.chatbot-footer {
-    display: flex;
-    gap: 10px;
-    padding: 12px 14px;
-    background: rgba(12, 24, 20, 0.9);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
+        .chatbot-footer {
+            display: flex;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(12, 24, 20, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-.chatbot-input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.06);
-    color: #e6f4ec;
-    outline: none;
-}
+        .chatbot-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+            color: #e6f4ec;
+            outline: none;
+        }
 
-.chatbot-send {
-    padding: 0 14px;
-    border: none;
-    border-radius: 10px;
-    background: #7cf2b0;
-    color: #0f1c18;
-    font-weight: 600;
-    cursor: pointer;
-}
+        .chatbot-send {
+            padding: 0 14px;
+            border: none;
+            border-radius: 10px;
+            background: #7cf2b0;
+            color: #0f1c18;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-/* ================= MOBILE RESPONSIVE STYLES ================= */
-@media (max-width: 768px) {
-    .chatbot-window {
-        width: 90vw;
-        height: 60vh;
-    }
-}
+        /* ================= MOBILE RESPONSIVE STYLES ================= */
+        @media (max-width: 768px) {
+            .chatbot-window {
+                width: 90vw;
+                height: 60vh;
+            }
+        }
     </style>
 </head>
 
@@ -1036,52 +1047,47 @@
     <div class="social-bg-image">
 
         <!--
-    ══════════════════════════════════════════════════════
-    SECTION 1: ENQUIRY NOW
-    ══════════════════════════════════════════════════════
-    CUSTOMIZE:
-    - Change href to your enquiry page URL
-    - Adjust top/height values to match PNG layout
-    - Modify label text
-    -->
+══════════════════════════════════════════════════════
+SECTION 1: ENQUIRY NOW
+══════════════════════════════════════════════════════
+CUSTOMIZE:
+- Change href to your enquiry page URL
+- Adjust top/height values to match PNG layout
+- Modify label text
+-->
         <a href="https://vatsalvarma.github.io/Greensiri-Contact/" class="social-section social-enquiry"
            target="_blank">
             <div class="social-label">ENQUIRY NOW</div>
         </a>
 
         <!--
-    ══════════════════════════════════════════════════════
-    SECTION 2: CALL
-    ══════════════════════════════════════════════════════
-    CUSTOMIZE:
-    - Change phone number in href (9119925552)
-    - This opens phone dialer on mobile/desktop
-    - Adjust position to match call icon in PNG
-    -->
-        <a href="tel:+919511125552"
-           class="social-section social-call">
+══════════════════════════════════════════════════════
+SECTION 2: CALL
+══════════════════════════════════════════════════════
+CUSTOMIZE:
+- Change phone number in href (9119925552)
+- This opens phone dialer on mobile/desktop
+- Adjust position to match call icon in PNG
+-->
+        <a href="tel:+919511125552" class="social-section social-call">
             <div class="social-label">CALL NOW</div>
         </a>
 
         <!--
-       ══════════════════════════════════════════════════════
-       SECTION 3: WHATSAPP
-       ══════════════════════════════════════════════════════
-       CUSTOMIZE:
-       - Change phone number in href (919999999999)
-       - Modify pre-filled message after &text=
-       - Adjust position to match WhatsApp icon in PNG
-       -->
+   ══════════════════════════════════════════════════════
+   SECTION 3: WHATSAPP
+   ══════════════════════════════════════════════════════
+   CUSTOMIZE:
+   - Change phone number in href (919999999999)
+   - Modify pre-filled message after &text=
+   - Adjust position to match WhatsApp icon in PNG
+   -->
         <a href="https://wa.me/919511125552?text=Hello%20Greensiri,%20I'm%20interested%20in%20your%20properties"
-           class="social-section social-whatsapp"
-           target="_blank">
+           class="social-section social-whatsapp" target="_blank">
             <div class="social-label">WHATSAPP</div>
         </a>
 
-        <a href="#"
-           class="social-section social-contact"
-           id="chatbotToggle"
-           role="button">
+        <a href="#" class="social-section social-contact" id="chatbotToggle" role="button">
             <div class="social-label">CHAT-BOT</div>
         </a>
     </div>
@@ -1122,9 +1128,9 @@
         <a href="https://vatsalvarma.github.io/TarniFarms/">FARMS</a>
         <a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/">RESIDENTIALS</a>
         <a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/">VILLAS</a>
-        <a href="#">SHOT AT SITE</a>
+        <a href="https://vatsalvarma.github.io/Shot-at-site/">SHOT AT SITE</a>
         <a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a>
-        <a href="#">BLOGS</a>
+        <a href=" ">BLOGS</a>
         <a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a>
     </nav>
 
@@ -1198,241 +1204,239 @@
     <!-- Post Grid -->
     <div class="posts-grid">
 
-        <div class="post-card" onclick="location.href='Articles/Article-1.html'">
+        <a href="Articles/Article-1.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Living%20the%20Farm%20Life%20Might%20Be%20the%20Best%20Therapy%20You%E2%80%99ve%20Ever%20Tried.png">
             </div>
             <h3>Why Living the Farm Life Might Be the Best Therapy You’ve Ever Tried</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-2.html'">
+        <a href="Articles/Article-2.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
             </div>
             <h3>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-4.html'">
+        <a href="Articles/Article-4.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Buying%20Farmlands%20with%20Greensiri%20Tarini.png">
             </div>
             <h3>Benefits of Buying Farmlands with Greensiri Tarini</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-5.html'">
+        <a href="Articles/Article-5.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Benefits%20of%20Owning%20a%20Farmhouse%20in%20a%20Gated%20Community%20Near%20Bangalore.png">
             </div>
             <h3>Benefits of Owning a Farmhouse in a Gated Community Near Bangalore</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-6.html'">
+        <a href="Articles/Article-6.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Bengaluru%E2%80%99s%20Green%20Side%20-%20Agri%20Tourism.png">
             </div>
             <h3>Bengaluru’s Green Side - Agri Tourism</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-7.html'">
+        <a href="Articles/Article-7.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Health%20-%20Grow%20Medicinal%20Herbs%20%26%20Nutritious%20Greens%20at%20Greensiri%20Farmlands.png">
             </div>
             <h3>Cultivate Health - Grow Medicinal Herbs & Nutritious Greens at Greensiri Farmlands</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-8.html'">
+        <a href="Articles/Article-8.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Life%20-%20Grow%20Your%20Own%20Farm%20Fresh%20Food%20at%20Greensiri%20Tarini%20Farms.png">
             </div>
             <h3>Cultivate Life - Grow Your Own Farm Fresh Food at Greensiri Tarini Farms</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-9.html'">
+        <a href="Articles/Article-9.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Government%20Schemes%20Supporting%20Sustainable%20Agriculture%20in%20India.png">
             </div>
             <h3>Government Schemes Supporting Sustainable Agriculture in India</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-10.html'">
+        <a href="Articles/Article-10.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20Real%20Estate%20Investment%20Agri-Tourism%20ROI%20Near%20Bangalore.png">
             </div>
             <h3>Lepakshi Real Estate Investment Agri-Tourism ROI Near Bangalore</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-11.html'">
+        <a href="Articles/Article-11.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20vs%20Nandi%20Hills%20Where%20Should%20You%20Invest%20in%202026.png">
             </div>
             <h3>Lepakshi vs Nandi Hills Where Should You Invest in 2026</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-12.html'">
+        <a href="Articles/Article-12.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Lepakshi%20%E2%80%93%20A%20Hidden%20Gem%20for%20Resort%20Investment.png">
             </div>
             <h3>Lepakshi – A Hidden Gem for Resort Investment</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-13.html'">
+        <a href="Articles/Article-13.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Managed%20Farmlands%20vs.%20Traditional%20Agriculture%20-%20Which%20Suits%20Bangalore%20Investors.png">
             </div>
             <h3>Managed Farmlands vs. Traditional Agriculture - Which Suits Bangalore Investors?</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-14.html'">
+        <a href="Articles/Article-14.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Organic%20Farming%20in%20Bengaluru_1.png">
             </div>
             <h3>Organic Farming in Bengaluru</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-15.html'">
+        <a href="Articles/Article-15.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Own%20Farmland%20Near%20Bangalore%20Airport%20with%20Greensiri%20Tarini%20Farms.png">
             </div>
             <h3>Own Farmland Near Bangalore Airport with Greensiri Tarini Farms</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-16.html'">
+        <a href="Articles/Article-16.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Plant%20Beauty%2C%20Value%20%26%20Legacy%20-%20Trees%20for%20Your%20Farm%20with%20Greensiri.png">
             </div>
             <h3>Plant Beauty, Value, and Legacy: Trees for Your Farm with Greensiri</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-17.html'">
+        <a href="Articles/Article-17.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Profitable%20Agricultural%20Investment%20Opportunities%20in%20Bengaluru.png">
             </div>
             <h3>Profitable Agricultural Investment Opportunities in Bengaluru</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-18.html'">
+        <a href="Articles/Article-18.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/ROI%20of%20Investing%20in%20Farmlands.png">
             </div>
             <h3>Farmland Investment ROI Near Bangalore | Green Siri Tarini Farms</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-19.html'">
+        <a href="Articles/Article-19.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Sustainable%20Living%20in%20Farmhouses.png">
             </div>
             <h3>Sustainable Living in Farmhouses</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-20.html'">
+        <a href="Articles/Article-20.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Future%20of%20Real%20Estate%20Investments%20in%20Bangalore.png">
             </div>
             <h3>The Future of Real Estate Investments in Bangalore</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-21.html'">
+        <a href="Articles/Article-21.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20growth%20of%20communities%20in%20bengaluru%20eco%20friendly%20.jpg">
             </div>
             <h3>The Growth of Communities in Bengaluru - Eco Friendly</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-22.html'">
+        <a href="Articles/Article-22.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Timeless%20Charm%20of%20Farmhouses%20in%20Farmlands_1.png">
             </div>
             <h3>The Timeless Charm of Farmhouses in Farmlands</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-23.html'">
+        <a href="Articles/Article-23.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/The%20Ultimate%20Guide%20to%20Investing%20in%20Managed%20Farmlands%20Near%20Bangalore.png">
             </div>
             <h3>The Ultimate Guide to Investing in Managed Farmlands Near Bangalore</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-24.html'">
+        <a href="Articles/Article-24.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Top%205%20Reasons%20Why%20Buying%20Farmland%20Near%20Bangalore%20is%20a%20Smart%20Investment_2.png">
             </div>
             <h3>Top 5 Reasons Why Buying Farmland Near Bangalore is a Smart Investment</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-
-
-        <div class="post-card" onclick="location.href='Articles/Article-26.html'">
+        <a href="Articles/Article-26.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
             </div>
             <h3>Understanding Agricultural Land Measurement in India</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-27.html'">
+        <a href="Articles/Article-27.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/What%20is%20managed%20farmland%20and%20how%20does%20work.png">
             </div>
             <h3>What is Managed Farmland? And How Does It Work</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
-        <div class="post-card" onclick="location.href='Articles/Article-28.html'">
+        <a href="Articles/Article-28.html" class="post-card">
             <div class="post-img">
                 <img
                         src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Managed%20Farmlands%20in%20Bangalore%20Are%20the%20Next%20Big%20Real%20Estate%20Investment.png">
             </div>
             <h3>Why Managed Farmlands in Bangalore Are the Next Big Real Estate Investment</h3>
             <p>Read More</p>
-        </div>
+        </a>
 
     </div>
     <!-- Bottom Banner Image -->
@@ -1442,96 +1446,88 @@
     </div>
 </main>
 
-<!-- --- Footer --- -->
 <footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <span class="footer-bold">GREENSIRI INFRA LLP</span>
-            <p class="footer-text">
-                130/2, 3RD FLOOR, OMKARA BUILDING,<br>
-                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
-                YELAHANKA, BENGALURU - 64
+    <div class="footer-wrapper">
+        <div class="footer-grid">
+            <!-- Column 1: Address -->
+            <div class="footer-col">
+                <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                <p class="footer-text">
+                    130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                    INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                    YELAHANKA, BENGALURU - 64
+                </p>
+            </div>
+
+            <!-- Column 2: Contact Info -->
+
+            <div class="footer-col">
+                <a href="tel:+919511125552" class="footer-contact-item"
+                   style="color: white; text-decoration: none;">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 95111 25552
+                </a>
+                <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+                   style="color: white; text-decoration: none;">
+                    <i class="fa-regular fa-envelope"></i>
+                    contact@greensiri.in
+                </a>
+            </div>
+
+            <!-- Column 3: Logo -->
+            <div class="footer-col">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                     class="footer-logo" alt="Greensiri Logo">
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div class="footer-col footer-subscribe">
+                <h5>DO YOU HAVE ANY QUERY?</h5>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="example@email.com" required
+                           oninvalid="this.setCustomValidity('please enter a valid email address')"
+                           oninput="this.setCustomValidity('')">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="subscribe-note">
+                    PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                </div>
+            </div>
+
+            <!-- Column 5: Social Media -->
+            <div class="footer-col footer-social">
+                <h5>SOCIAL MEDIA LINKS</h5>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/greensiriproperties" target="_blank"
+                       rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/greensiri_properties" target="_blank"
+                       rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Greensiri" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    <a href="https://in.pinterest.com/greensiriproperties" target="_blank"
+                       rel="noopener noreferrer"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                       target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919511125552?text=" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; Copyright 2026
+                <span class="highlight">GREENSIRI PROPERTIES</span>.
+                All Rights Reserved |
+                Website Design by
+                <span class="highlight">PRIZMABRIXX</span>
             </p>
         </div>
-
-        <div class="footer-col">
-            <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
-                <i class="fa-solid fa-phone"></i>
-                +91 95111 25552
-            </a>
-            <a href="mailto:contact@greensiri.in" class="footer-contact-item" style="color: white; text-decoration: none;">
-                <i class="fa-regular fa-envelope"></i>
-                contact@greensiri.in
-            </a>
-        </div>
-
-        <div class="footer-col">
-            <div>
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
-                     class="footer-logo">
-            </div>
-            <p class="footer-tagline"></p>
-        </div>
-
-        <div class="footer-col footer-subscribe">
-            <h5>DO YOU HAVE ANY QUERY?</h5>
-            <form class="subscribe-form">
-                <input type="email" placeholder="example@email.com" required
-                       oninvalid="this.setCustomValidity('please enter valid email address')"
-                       oninput="this.setCustomValidity('')">
-                <button type="submit">SUBSCRIBE</button>
-            </form>
-            <div class="subscribe-note">
-                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
-            </div>
-        </div>
-
-        <div class="footer-col footer-social">
-            <h5>SOCIAL MEDIA LINKS</h5>
-            <div class="footer-social-icons">
-                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
-                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>
-            &copy; Copyright 2026
-            <span class="highlight">GREENSIRI PROPERTIES</span>.
-            All Rights Reserved |
-
-            Website Design by
-            <span class="highlight">PRIZMABRIXX</span>
-        </p>
     </div>
 </footer>
 
 
-<script>
-    document.querySelectorAll('.post-card').forEach((card, index) => {
-        card.addEventListener('click', () => {
-            // Add your external blog URLs here
-            const links = [
-                "https://example.com/blog1",
-                "https://example.com/blog2",
-                "https://example.com/blog3",
-                "https://example.com/blog4",
-                "https://example.com/blog5",
-                "https://example.com/blog6",
-                "https://example.com/blog7",
-                "https://example.com/blog8",
-                "https://example.com/blog9"
-            ];
 
-            window.open(links[index], "_blank");
-        });
-    });
-</script>
 
 <script>
     const reveals = document.querySelectorAll('.post-card, .featured-post');
@@ -1551,96 +1547,96 @@
     revealOnScroll();
 
     // =====================================================================
-// CHATBOT WIDGET
-// =====================================================================
-const chatbotWrapper = document.getElementById('chatbotWrapper');
-const chatbotToggle = document.getElementById('chatbotToggle');
-const chatbotClose = document.getElementById('chatbotClose');
-const chatbotInput = document.getElementById('chatbotInput');
-const chatbotSend = document.getElementById('chatbotSend');
-const chatbotMessages = document.getElementById('chatbotMessages');
-const chatbotWindow = document.getElementById('chatbotWindow');
-const chatbotDragHandle = document.getElementById('chatbotDragHandle');
+    // CHATBOT WIDGET
+    // =====================================================================
+    const chatbotWrapper = document.getElementById('chatbotWrapper');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatbotDragHandle = document.getElementById('chatbotDragHandle');
 
-function openChatbot() {
-    chatbotWrapper.classList.add('open');
-    chatbotInput.focus();
-}
-
-function closeChatbot() {
-    chatbotWrapper.classList.remove('open');
-}
-
-function addMessage(text, type) {
-    const bubble = document.createElement('div');
-    bubble.className = `chat-message ${type}`;
-    bubble.textContent = text;
-    chatbotMessages.appendChild(bubble);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-}
-
-function respondToMessage(message) {
-    const normalized = message.trim().toLowerCase();
-    if (['hi', 'hello', 'hey'].includes(normalized)) {
-        addMessage('Hi, this is Green Siri.', 'bot');
-    } else {
-        addMessage('Thanks for reaching out! Share your query and we will get back to you.', 'bot');
+    function openChatbot() {
+        chatbotWrapper.classList.add('open');
+        chatbotInput.focus();
     }
-}
 
-function sendMessage() {
-    const text = chatbotInput.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    chatbotInput.value = '';
-    respondToMessage(text);
-}
+    function closeChatbot() {
+        chatbotWrapper.classList.remove('open');
+    }
 
-// Event Listeners for Chat Functionality
-chatbotToggle?.addEventListener('click', (e) => {
-    e.preventDefault();
-    openChatbot();
-});
+    function addMessage(text, type) {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-message ${type}`;
+        bubble.textContent = text;
+        chatbotMessages.appendChild(bubble);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
 
-chatbotClose?.addEventListener('click', closeChatbot);
-chatbotSend?.addEventListener('click', sendMessage);
-chatbotInput?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') sendMessage();
-});
+    function respondToMessage(message) {
+        const normalized = message.trim().toLowerCase();
+        if (['hi', 'hello', 'hey'].includes(normalized)) {
+            addMessage('Hi, this is Green Siri.', 'bot');
+        } else {
+            addMessage('Thanks for reaching out! Share your query and we will get back to you.', 'bot');
+        }
+    }
 
-// Drag to reposition logic
-let isDragging = false;
-let startX = 0;
-let startY = 0;
-let startRight = 0;
-let startBottom = 0;
+    function sendMessage() {
+        const text = chatbotInput.value.trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        chatbotInput.value = '';
+        respondToMessage(text);
+    }
 
-function handleDragStart(e) {
-    isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
-    const rect = chatbotWrapper.getBoundingClientRect();
-    startRight = window.innerWidth - rect.right;
-    startBottom = window.innerHeight - rect.bottom;
-    document.addEventListener('pointermove', handleDragMove);
-    document.addEventListener('pointerup', handleDragEnd);
-}
+    // Event Listeners for Chat Functionality
+    chatbotToggle?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openChatbot();
+    });
 
-function handleDragMove(e) {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startX;
-    const deltaY = e.clientY - startY;
-    chatbotWrapper.style.right = `${Math.max(0, startRight - deltaX)}px`;
-    chatbotWrapper.style.bottom = `${Math.max(0, startBottom - deltaY)}px`;
-}
+    chatbotClose?.addEventListener('click', closeChatbot);
+    chatbotSend?.addEventListener('click', sendMessage);
+    chatbotInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
 
-function handleDragEnd() {
-    isDragging = false;
-    document.removeEventListener('pointermove', handleDragMove);
-    document.removeEventListener('pointerup', handleDragEnd);
-}
+    // Drag to reposition logic
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startRight = 0;
+    let startBottom = 0;
 
-chatbotDragHandle?.addEventListener('pointerdown', handleDragStart);
+    function handleDragStart(e) {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = chatbotWrapper.getBoundingClientRect();
+        startRight = window.innerWidth - rect.right;
+        startBottom = window.innerHeight - rect.bottom;
+        document.addEventListener('pointermove', handleDragMove);
+        document.addEventListener('pointerup', handleDragEnd);
+    }
+
+    function handleDragMove(e) {
+        if (!isDragging) return;
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+        chatbotWrapper.style.right = `${Math.max(0, startRight - deltaX)}px`;
+        chatbotWrapper.style.bottom = `${Math.max(0, startBottom - deltaY)}px`;
+    }
+
+    function handleDragEnd() {
+        isDragging = false;
+        document.removeEventListener('pointermove', handleDragMove);
+        document.removeEventListener('pointerup', handleDragEnd);
+    }
+
+    chatbotDragHandle?.addEventListener('pointerdown', handleDragStart);
 </script>
 
 <script>
