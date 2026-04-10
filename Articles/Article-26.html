@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 37px;
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span {
+            background: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                align-items: center;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: #0d110d;
+                flex-direction: column;
+                padding: 80px 20px;
+                gap: 20px;
+                transition: 0.4s;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                color: #fff;
+            }
+        }
+
+
+        body {
+            background: #fff;
+        }
+
+        /* ARTICLE */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .article {
+            padding: 135px 0 60px;
+        }
+
+        .article h1 {
+            font-family: 'Poppins', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #000;
+        }
+
+        .article img {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 30px;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #222;
+        }
+
+        /* UNIT LIST */
+        .unit-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .unit-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: #f9f9f9;
+            border-left: 4px solid #2a7a4f;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 15px;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .unit-label {
+            display: inline-block;
+            background: #2a7a4f;
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            min-width: 110px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .unit-sub {
+            list-style: none;
+            padding-left: 10px;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .unit-sub li::before {
+            content: '›';
+            margin-right: 6px;
+            color: #2a7a4f;
+            font-weight: 700;
+        }
+
+        /* CONVERSION LIST */
+        .conv-box {
+            background: #f0f7f3;
+            border: 1px solid #c3dfc9;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 10px 0 24px;
+        }
+
+        .conv-box ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .conv-box li {
+            font-size: 15px;
+            color: #222;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .conv-box li::before {
+            content: '=';
+            display: inline-block;
+            background: #2a7a4f;
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            flex-shrink: 0;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact-item:hover {
+            opacity: 0.7;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .subscribe-form input:focus {
+            border-color: #fff;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ================= RESPONSIVE (MOBILE OPTIMIZATION) ================= */
+        @media(max-width: 900px) {
+            .footer-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .footer-col {
+                border-right: none;
+                padding: 0;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .subscribe-form {
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+        <!-- --- Navbar --- -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png"
+                    alt="Greensiri Logo" class="nav-logo">
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">HOME</a>
+            <a href="https://vatsalvarma.github.io/TarniFarms/">FARMS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/">RESIDENTIALS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/">VILLAS</a>
+            <a href="https://vatsalvarma.github.io/Shot-at-site/">SHOT AT SITE</a>
+            <a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <section class="article container">
+        <h1>Understanding Agricultural Land Measurement in India</h1>
+
+        <img
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Understanding%20Agricultural%20Land%20Measurement%20in%20India.png">
+
+        <p>Agricultural land measurement in India can often be confusing due to the use of multiple traditional and
+            modern units across different states. If you are looking to invest in farmland, understanding these units is
+            essential to make informed decisions. <br>
+        </p>
+
+        <h2>Standard Land Measurement Units in India</h2>
+        <p>India uses a mix of metric (hectares and acres) and regional units that vary by state. Here are the commonly
+            used units:</p>
+        <ul class="unit-list">
+            <li>
+                <span class="unit-label">Hectare (ha)</span>
+                <span>A universally recognized metric unit. <strong>1 hectare = 2.47 acres</strong> or 10,000 sq.
+                    meters.</span>
+            </li>
+            <li>
+                <span class="unit-label">Ankanam</span>
+                <span>Used in Andhra Pradesh &amp; Telangana. <strong>1 ankanam = 72 sq. feet.</strong></span>
+            </li>
+            <li>
+                <span class="unit-label">Acre</span>
+                <span>One of the most widely used units across India. <strong>1 acre = 43,560 sq. feet</strong> ≈ 4,047
+                    sq. meters.</span>
+            </li>
+            <li>
+                <span class="unit-label">Guntha</span>
+                <span>Popular in Maharashtra, Karnataka &amp; Gujarat. <strong>1 guntha = 1,089 sq. feet.</strong> 40
+                    gunthas = 1 acre.</span>
+            </li>
+            <li>
+                <span class="unit-label">Ground</span>
+                <span>Common in Tamil Nadu. <strong>1 ground = 2,400 sq. feet.</strong></span>
+            </li>
+            <li>
+                <span class="unit-label">Cent</span>
+                <span>Used in Kerala, Tamil Nadu &amp; Karnataka. <strong>1 cent = 435.6 sq. feet.</strong> 100 cents =
+                    1 acre.</span>
+            </li>
+            <li>
+                <div style="flex:1">
+                    <span class="unit-label" style="margin-bottom:8px;display:inline-block">Bigha</span>
+                    <span> Used in North India — size varies by state:</span>
+                    <ul class="unit-sub">
+                        <li>Punjab, Haryana, Himachal Pradesh: ~2,725 sq. meters (0.67 acres)</li>
+                        <li>Uttar Pradesh, Uttarakhand: ~6,750 sq. meters (1.67 acres)</li>
+                        <li>Bihar, Rajasthan: ~2,500–3,025 sq. meters (0.62–0.75 acres)</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div style="flex:1">
+                    <span class="unit-label" style="margin-bottom:8px;display:inline-block">Katha / Kattha</span>
+                    <span> Used in West Bengal, Bihar &amp; Assam — size varies by state:</span>
+                    <ul class="unit-sub">
+                        <li>West Bengal: ~720 sq. feet</li>
+                        <li>Bihar: ~1,361 sq. feet</li>
+                        <li>Assam: ~2,880 sq. feet</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Converting Land Measurement Units</h2>
+        <p>Since different states use different units, understanding conversions is crucial:</p>
+        <div class="conv-box">
+            <ul>
+                <li>1 hectare = 2.47 acres</li>
+                <li>1 acre = 40 gunthas = 100 cents</li>
+                <li>1 bigha (UP) ≈ 6,750 sq. meters = 1.67 acres</li>
+                <li>1 katha (West Bengal) ≈ 720 sq. feet</li>
+                <li>1 ground = 2,400 sq. feet</li>
+            </ul>
+        </div>
+        <p>For precise calculations, online land measurement converters and government land records can be useful.</p>
+
+        <h2>How to Measure Agricultural Land Accurately?</h2>
+        <p>
+            Accurate land measurement is essential to avoid disputes and ensure legal clarity. Here are the key methods:
+            <br>
+            1. Land Records & Documents — Government-maintained documents such as Patta, RTC, and 7/12 extract provide
+            accurate size details and ownership verification. <br>
+            2. Survey & Demarcation — Engaging a professional surveyor helps mark boundaries correctly using traditional
+            and digital methods. <br>
+            3. GPS & Digital Mapping — Modern tools like Google Earth, GIS-based mapping, and GPS devices allow for
+            accurate digital measurement and visualization of land parcels. <br>
+            4. Physical On-Site Measurement — Using measuring tapes and chains is still a common practice, particularly
+            in rural areas. <br>
+        </p>
+
+        <h2>Why Does Understanding Land Measurement Matter?</h2>
+        <p>
+            • Investment Clarity: Proper land measurement helps buyers and investors understand the exact area they are
+            purchasing. <br>
+            • Legal Compliance: Ensures adherence to local regulations and avoids land disputes. <br>
+            • Better Land Utilization: Helps in planning agricultural activities, infrastructure, and irrigation
+            management. <br>
+            • Property Valuation: The size and location of agricultural land directly impact its value, making precise
+            measurement crucial for financial decisions. <br>
+        </p>
+
+        <h2>Challenges in Agricultural Land Measurement in India</h2>
+        <p>
+            • Variability in Regional Units: The same unit name can mean different sizes in different states, leading to
+            confusion. <br>
+            • Discrepancies in Land Records: Old land records may have discrepancies due to manual errors, making
+            verification essential. <br>
+            • Encroachments & Boundary Disputes: Unclear demarcations often lead to legal conflicts among landowners.
+            <br>
+            • Lack of Awareness: Many buyers and sellers are not familiar with standard measurement units, causing
+            misunderstandings. <br>
+        </p>
+
+        <h2>Final Thoughts</h2>
+        <p>
+            If you’re considering investing in farmland near Bangalore, understanding these land measurement units can
+            help you make informed choices. At Greensiri, we simplify this process by providing clear land documentation
+            and expert guidance. <br>
+            With the rising demand for managed farmlands, having the right knowledge can ensure you make a secure and
+            profitable investment. <br>
+            For more details on farmland investment opportunities, visit <a
+                href="https://greensiri.in/greensiri-tarini-farms/" target="_blank">www.greensiri.in</a> or contact us
+            today! <br>
+        </p>
+
+    </section>
+    <section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+    <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="related-card" onclick="location.href='Article-3.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/A%20Beginner%E2%80%99s%20Guide%20to%20Buying%20Farmland%20in%20India.png">
+            <p>A Beginner’s Guide to Buying Farmland in India</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="related-card" onclick="location.href='Article-13.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Managed%20Farmlands%20vs.%20Traditional%20Agriculture%20-%20Which%20Suits%20Bangalore%20Investors.png">
+            <p>Managed Farmlands vs. Traditional Agriculture - Which Suits Bangalore Investors?</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="related-card" onclick="location.href='Article-18.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/ROI%20of%20Investing%20in%20Farmlands.png">
+            <p>Farmland Investment ROI Near Bangalore | Green Siri Tarini Farms</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+        <div class="footer-wrapper">
+            <div class="footer-grid">
+                <!-- Column 1: Address -->
+                <div class="footer-col">
+                    <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                    <p class="footer-text">
+                        130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                        INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                        YELAHANKA, BENGALURU - 64
+                    </p>
+                </div>
+
+                <!-- Column 2: Contact Info -->
+                <div class="footer-col">
+                    <a href="tel:+919511125552" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-solid fa-phone"></i>
+                        +91 95111 25552
+                    </a>
+                    <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-regular fa-envelope"></i>
+                        contact@greensiri.in
+                    </a>
+                </div>
+
+                <!-- Column 3: Logo -->
+                <div class="footer-col">
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo" alt="Greensiri Logo">
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div class="footer-col footer-subscribe">
+                    <h5>DO YOU HAVE ANY QUERY?</h5>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="example@email.com" required
+                            oninvalid="this.setCustomValidity('please enter a valid email address')"
+                            oninput="this.setCustomValidity('')">
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <div class="subscribe-note">
+                        PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                    </div>
+                </div>
+
+                <!-- Column 5: Social Media -->
+                <div class="footer-col footer-social">
+                    <h5>SOCIAL MEDIA LINKS</h5>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/greensiriproperties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/greensiri_properties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Greensiri" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://in.pinterest.com/greensiriproperties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                            target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919511125552?text=" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; Copyright 2026
+                    <span class="highlight">GREENSIRI PROPERTIES</span>.
+                    All Rights Reserved |
+                    Website Design by
+                    <a href="https://prizmabrixx.com/" target="_blank" rel="noopener noreferrer" class="highlight">PRIZMABRIXX</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+        <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+            document.querySelector(".hamburger").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="related-cards-style.css">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 37px;
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span {
+            background: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                align-items: center;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: #0d110d;
+                flex-direction: column;
+                padding: 80px 20px;
+                gap: 20px;
+                transition: 0.4s;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                color: #fff;
+            }
+        }
+
+
+        body {
+            background: #fff;
+        }
+
+        /* ARTICLE */
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .article {
+            padding: 135px 0 60px;
+        }
+
+        .article h1 {
+            font-family: 'Poppins', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #000;
+        }
+
+        .article img {
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 30px;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #222;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: #0b0b0b;
+            color: white;
+            padding: 60px 8%;
+            min-height: 30vh;
+        }
+
+        .footer-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 40px;
+            border-right: 2px solid #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col:first-child {
+            padding-left: 0;
+            flex: 1.5;
+        }
+
+        .footer-col:nth-child(1),
+        .footer-col:nth-child(2) {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .footer-bold {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact-item:hover {
+            opacity: 0.7;
+        }
+
+        .footer-contact-item i {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .footer-logo {
+            width: 150px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .footer-subscribe h5,
+        .footer-social h5 {
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-social h5 {
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 12px;
+            color: white;
+            font-size: 11px;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .subscribe-form input:focus {
+            border-color: #fff;
+        }
+
+        .subscribe-form button {
+            background: transparent;
+            border: 1px solid #fff;
+            padding: 8px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 100%;
+        }
+
+        .subscribe-form button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .subscribe-note {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            box-shadow: 0 0 0 1.5px #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s;
+        }
+
+        .footer-social-icons a:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ================= RESPONSIVE (MOBILE OPTIMIZATION) ================= */
+        @media(max-width: 900px) {
+            .footer-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .footer-col {
+                border-right: none;
+                padding: 0;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .subscribe-form {
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+        <!-- --- Navbar --- -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png"
+                    alt="Greensiri Logo" class="nav-logo">
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">HOME</a>
+            <a href="https://vatsalvarma.github.io/TarniFarms/">FARMS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/">RESIDENTIALS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/">VILLAS</a>
+            <a href="https://vatsalvarma.github.io/Shot-at-site/">SHOT AT SITE</a>
+            <a href="https://vatsalvarma.github.io/About-Greensiri-page/">COMPANY</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-blogs-/">BLOGS</a>
+            <a href="https://vatsalvarma.github.io/Greensiri-Contact/">CONTACT</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <section class="article container">
+        <h1>Plant Beauty, Value, and Legacy: Trees for Your Farm with Greensiri</h1>
+
+        <img
+            src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Plant%20Beauty%2C%20Value%20%26%20Legacy%20-%20Trees%20for%20Your%20Farm%20with%20Greensiri.png">
+
+
+        <p>At Greensiri, your farmland isn’t just about food — it’s about building a legacy. Along with vegetables,
+            fruits, and healing herbs, we offer thoughtfully selected ornamental, timber, and high-value tree species.
+            These trees elevate your land — aesthetically, ecologically, and economically. <br>
+            Whether you want to add elegance to your weekend retreat, diversify long-term value, or support biodiversity
+            — we’ve got you covered. <br>
+        </p>
+
+        <h2>Ornamental Trees: Where Nature Becomes Art</h2>
+        <p>
+            These trees and plants turn your land into a lush, vibrant paradise — loved by birds, bees, and every
+            visitor who steps in. <br>
+        </p>
+
+        <h3>🌳 Ficus benjamina (Weeping Fig)</h3>
+        <p>
+            Elegant, air-purifying, and sculptural — perfect for shade and boundary landscaping. <br>
+        </p>
+
+        <h3>🌿 Terminalia</h3>
+        <p>
+            Is a hardy, fast-growing tree often used for roadside and landscape beautification. Adds structure and
+            symmetry to any property. <br>
+        </p>
+
+        <h3>🌴 Bird of Paradise Palm</h3>
+        <p>
+            A showstopper with tropical flair — wide leaves and bright flowers that resemble birds in flight. <br>
+        </p>
+
+        <h3>🍃 Calathea lutea</h3>
+        <p>
+            Bold-leaved ornamental with a lush, tropical look — adds depth and contrast to garden paths or shaded
+            corners. <br>
+        </p>
+
+        <h3>🌸 Plumeria (Frangipani) Varieties</h3>
+        <p>
+            Fragrant, colorful, and symbolic — used in spiritual and decorative gardens. Low maintenance and deeply
+            rewarding. <br>
+        </p>
+
+        <h3>🌺 Geranium Varieties</h3>
+        <p>
+            Vibrant flowers with aromatic leaves. Ideal for borders and colorful beds. <br>
+        </p>
+
+        <h3>🌸 Hibiscus</h3>
+        <p>
+            Great for pollinators, rich in color, and used for natural remedies. Flowers attract butterflies and
+            brighten your space. <br>
+        </p>
+
+        <h3>🌹 Rose</h3>
+        <p>
+            The timeless bloom. Symbol of love and beauty — with varieties to suit every mood and climate. <br>
+        </p>
+
+        <h3>🌼 Jasmine</h3>
+        <p>
+            Highly fragrant and culturally significant. Perfect near homes, patios, or along walking paths. <br>
+        </p>
+
+        <h2>🌲 Timber Trees: Long-Term Green Wealth</h2>
+        <p>
+            Looking for future income or a retirement cushion? Timber trees grow with you — slowly but steadily
+            increasing your land’s value. <br>
+        </p>
+
+        <h3>🌳 Teak (Sagwan)</h3>
+        <p>
+            India’s most prized timber. Long lifespan, high durability, and top demand in furniture and construction.
+            <br>
+        </p>
+
+        <h3>🌿 Mahogany</h3>
+        <p>
+            Known for its rich reddish-brown wood, used in premium interiors. An ideal legacy crop. <br>
+        </p>
+
+        <h3>🌲 Silver Oak</h3>
+        <p>
+            Fast-growing and multipurpose. Used for plywood, shade, and even as a support tree in coffee plantations.
+            <br>
+        </p>
+
+        <h3>🌳 Neem</h3>
+        <p>
+            A sacred, medicinal tree that’s also pest-repellent. It provides shade, protection, and is ideal for organic
+            farms. <br>
+        </p>
+
+        <h2>💎 High-Value Trees: The Premium Picks</h2>
+        <p>
+            Invest in nature’s gold. These trees take time — but their yield is unmatched in value, uniqueness, and
+            demand. <br>
+        </p>
+
+        <h3>🪵 Red Sandalwood (Raktha Chandanam)</h3>
+        <p>
+            Rare, exotic, and high-value — used in cosmetics, medicines, and crafts. Protected and precious. <br>
+        </p>
+
+        <h3>🌲 Sandalwood (Srigandha)</h3>
+        <p>
+            An evergreen tree prized for its fragrant heartwood and essential oil. Legally regulated, and highly
+            lucrative. <br>
+        </p>
+
+        <h2>🌟 Why Plant These Trees at Greensiri?</h2>
+        <p>
+            <strong>Beauty + Biodiversity</strong> <br>
+            Create natural shade, attract birds, and enjoy the luxury of a green view — all from your farm. <br><br>
+            <strong>Legacy & Value</strong> <br>
+            Timber and high-value trees grow in worth over time — like nature’s version of a fixed deposit. <br><br>
+            <strong>Low Maintenance, Long Life</strong> <br>
+            With expert care and drip irrigation systems, your trees thrive with minimal intervention. <br><br>
+            <strong>Eco-Conscious Living</strong> <br>
+            Play your part in reforestation, carbon sequestration, and creating a cooler microclimate. <br>
+        </p>
+
+        <h2>🌱 Let’s Grow Your Forest of the Future</h2>
+        <p>
+            Whether you’re curating a peaceful farm stay, building green equity, or investing in eco-wealth, the trees
+            you choose today will tell your story tomorrow. <br><br>
+            📍 Secure Your Green Asset at Tarini Farms <br>
+            📆 Book a site visit now: Schedule Now <br>
+        </p>
+
+    </section>
+<section class="related">
+        <h2 class="related-title">YOU MAY ALSO READ</h2>
+
+    <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="related-card" onclick="location.href='Article-2.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Powerful%20Oxygen-Producing%20Trees%20for%20Your%20Bangalore%20Farmland%20Investment.png">
+            <p>6 Powerful Oxygen-Producing Trees for Your Bangalore Farmland Investment</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="related-card" onclick="location.href='Article-7.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Cultivate%20Health%20-%20Grow%20Medicinal%20Herbs%20%26%20Nutritious%20Greens%20at%20Greensiri%20Farmlands.png">
+            <p>Cultivate Health - Grow Medicinal Herbs & Nutritious Greens at Greensiri Farmlands</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="related-card" onclick="location.href='Article-28.html'">
+            <img src="https://raw.githubusercontent.com/KuruvaVamshi/Greensiri-Blogs/refs/heads/main/thumbnails/Why%20Managed%20Farmlands%20in%20Bangalore%20Are%20the%20Next%20Big%20Real%20Estate%20Investment.png">
+            <p>Why Managed Farmlands in Bangalore Are the Next Big Real Estate Investment</p>
+        </div>
+
+    </div>
+</section>
+<footer>
+        <div class="footer-wrapper">
+            <div class="footer-grid">
+                <!-- Column 1: Address -->
+                <div class="footer-col">
+                    <span class="footer-bold">GREENSIRI INFRA LLP</span>
+                    <p class="footer-text">
+                        130/2, 3RD FLOOR, OMKARA BUILDING,<br>
+                        INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                        YELAHANKA, BENGALURU - 64
+                    </p>
+                </div>
+
+                <!-- Column 2: Contact Info -->
+                <div class="footer-col">
+                    <a href="tel:+919511125552" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-solid fa-phone"></i>
+                        +91 95111 25552
+                    </a>
+                    <a href="mailto:contact@greensiri.in" class="footer-contact-item"
+                        style="color: white; text-decoration: none;">
+                        <i class="fa-regular fa-envelope"></i>
+                        contact@greensiri.in
+                    </a>
+                </div>
+
+                <!-- Column 3: Logo -->
+                <div class="footer-col">
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                        class="footer-logo" alt="Greensiri Logo">
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div class="footer-col footer-subscribe">
+                    <h5>DO YOU HAVE ANY QUERY?</h5>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="example@email.com" required
+                            oninvalid="this.setCustomValidity('please enter a valid email address')"
+                            oninput="this.setCustomValidity('')">
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <div class="subscribe-note">
+                        PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+                    </div>
+                </div>
+
+                <!-- Column 5: Social Media -->
+                <div class="footer-col footer-social">
+                    <h5>SOCIAL MEDIA LINKS</h5>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/greensiriproperties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/greensiri_properties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Greensiri" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://in.pinterest.com/greensiriproperties" target="_blank"
+                            rel="noopener noreferrer"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all"
+                            target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919511125552?text=" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; Copyright 2026
+                    <span class="highlight">GREENSIRI PROPERTIES</span>.
+                    All Rights Reserved |
+                    Website Design by
+                    <a href="https://prizmabrixx.com/" target="_blank" rel="noopener noreferrer" class="highlight">PRIZMABRIXX</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+        <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+            document.querySelector(".hamburger").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>
